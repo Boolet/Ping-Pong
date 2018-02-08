@@ -4,9 +4,9 @@
 #include <stdio.h>
 #include "Bound.hpp"
 
-class Paddle : Bounds{
-    
-    
+class Paddle : public Bounds{
+public:
+    Paddle(float x, float y, float w, float h):Bounds(x,y,w,h){}
     
 };
 

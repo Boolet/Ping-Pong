@@ -4,9 +4,11 @@
 #include <stdio.h>
 #include "Bound.hpp"
 
-class Ball : Bounds{
+class Ball : public Bounds{
 public:
+    Ball(float x, float y):Bounds(x,y,1,1){}
     void Move(float deltaTime);
+    void OnCollision(side onSide);
     
 private:
     float xVelocity, yVelocity;

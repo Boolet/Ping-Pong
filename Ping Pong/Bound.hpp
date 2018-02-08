@@ -2,6 +2,7 @@
 #define Bound_hpp
 
 #include <stdio.h>
+#include <vector>
 
 class Bounds{
 public:
@@ -15,10 +16,20 @@ public:
         height = h;
     }
     
-    bool isIntersecting(Bounds other);
+    enum axis{
+        xAxis, yAxis
+    };
     
-private:
+    enum side{
+        top, bottom, right, left, none
+    };
+    
+    bool isIntersecting(Bounds other);
+    side intersectionSide(Bounds other);
+    
+protected:
     float xPos, yPos, width, height;
+    Bounds intersectionArea(Bounds other);
     
     
     

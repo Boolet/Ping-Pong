@@ -7,14 +7,18 @@
 
 class GameEngine{
 public:
-    GameEngine();
+    GameEngine(float width, float height);
     void GameTick(float deltaTime);
     
 private:
+    float gameWidth, gameHeight;
     Paddle playerOne;
     Bounds rightWall, topWall, leftWall, bottomWall;
     Ball ball;
+  
+    Bounds** ballColliders;
     
+    void RunCollisions();
 };
 
 #endif /* Game_Engine_hpp */
