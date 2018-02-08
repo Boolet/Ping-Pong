@@ -16,10 +16,18 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <sys/time.h> //FD_SET, FD_ISSET, FD_ZERO macros
+#include <pthread.h>
+#include <iostream>
 
 #define TRUE   1
 #define FALSE  0
 #define PORT 8888
+
+void* gameEngineThread(){
+    while(TRUE){
+        
+    }
+}
 
 int main(int argc , char *argv[])
 {
@@ -28,7 +36,7 @@ int main(int argc , char *argv[])
     max_clients = 1 , activity, i , valread , sd;
     int max_sd;
     struct sockaddr_in address;
-    
+
     char buffer[1025];  //data buffer of 1K
     
     //set of socket descriptors
@@ -65,7 +73,7 @@ int main(int argc , char *argv[])
     address.sin_port = htons( PORT );
     
     //bind the socket to localhost port 8888
-    if (bind(master_socket, (struct sockaddr *)&address, sizeof(address))<0)
+    if (bind(master_socket, (struct sockaddr *)&address, sizeof(address)) == -1)
     {
         perror("bind failed");
         exit(EXIT_FAILURE);
@@ -82,6 +90,10 @@ int main(int argc , char *argv[])
     //accept the incoming connection
     addrlen = sizeof(address);
     puts("Waiting for connections ...");
+
+    //RUN THE GAME ENGINE HERE
+    pthread_t gameEngine;
+    //pthread_create(&gameEngine, NULL, gameEngineThread, NULL);
     
     while(TRUE)
     {
@@ -184,6 +196,15 @@ int main(int argc , char *argv[])
                 }
             }
         }
+        
+    }
+    
+    //Rejoin the game engine thread
+    void*  status;
+    int rc = pthread_join(gameEngine, &status);
+    if (rc) {
+        printf("Error:unable to join, %i", rc);
+        exit(-1);
     }
     
     return 0;

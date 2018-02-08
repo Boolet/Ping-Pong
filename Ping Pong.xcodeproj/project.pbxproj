@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E165A1D8202CFF4E0027B0DE /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E165A1CE202CFF4E0027B0DE /* Ball.cpp */; };
+		E165A1D9202CFF4E0027B0DE /* Bound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E165A1D0202CFF4E0027B0DE /* Bound.cpp */; };
+		E165A1DA202CFF4E0027B0DE /* Communication Protocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E165A1D2202CFF4E0027B0DE /* Communication Protocol.cpp */; };
+		E165A1DB202CFF4E0027B0DE /* Game Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E165A1D4202CFF4E0027B0DE /* Game Engine.cpp */; };
+		E165A1DC202CFF4E0027B0DE /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E165A1D6202CFF4E0027B0DE /* Paddle.cpp */; };
 		E1888F2D202C14F4002E3A2D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1888F2C202C14F4002E3A2D /* main.cpp */; };
-		E1D4768A202C1538009F2EDA /* Communication Protocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1D47686202C1538009F2EDA /* Communication Protocol.cpp */; };
-		E1D4768B202C1538009F2EDA /* Game Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1D47688202C1538009F2EDA /* Game Engine.cpp */; };
-		E1D4768E202C180E009F2EDA /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1D4768C202C180E009F2EDA /* Paddle.cpp */; };
-		E1D47691202C1837009F2EDA /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1D4768F202C1837009F2EDA /* Ball.cpp */; };
-		E1D47694202C184A009F2EDA /* Bound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1D47692202C184A009F2EDA /* Bound.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,18 +28,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E165A1CE202CFF4E0027B0DE /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
+		E165A1CF202CFF4E0027B0DE /* Ball.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ball.hpp; sourceTree = "<group>"; };
+		E165A1D0202CFF4E0027B0DE /* Bound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bound.cpp; sourceTree = "<group>"; };
+		E165A1D1202CFF4E0027B0DE /* Bound.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bound.hpp; sourceTree = "<group>"; };
+		E165A1D2202CFF4E0027B0DE /* Communication Protocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Communication Protocol.cpp"; sourceTree = "<group>"; };
+		E165A1D3202CFF4E0027B0DE /* Communication Protocol.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "Communication Protocol.hpp"; sourceTree = "<group>"; };
+		E165A1D4202CFF4E0027B0DE /* Game Engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Game Engine.cpp"; sourceTree = "<group>"; };
+		E165A1D5202CFF4E0027B0DE /* Game Engine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "Game Engine.hpp"; sourceTree = "<group>"; };
+		E165A1D6202CFF4E0027B0DE /* Paddle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Paddle.cpp; sourceTree = "<group>"; };
+		E165A1D7202CFF4E0027B0DE /* Paddle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Paddle.hpp; sourceTree = "<group>"; };
 		E1888F29202C14F4002E3A2D /* Ping Pong */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Ping Pong"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1888F2C202C14F4002E3A2D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		E1D47686202C1538009F2EDA /* Communication Protocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Communication Protocol.cpp"; sourceTree = SOURCE_ROOT; };
-		E1D47687202C1538009F2EDA /* Communication Protocol.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "Communication Protocol.hpp"; sourceTree = SOURCE_ROOT; };
-		E1D47688202C1538009F2EDA /* Game Engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Game Engine.cpp"; sourceTree = SOURCE_ROOT; };
-		E1D47689202C1538009F2EDA /* Game Engine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "Game Engine.hpp"; sourceTree = SOURCE_ROOT; };
-		E1D4768C202C180E009F2EDA /* Paddle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Paddle.cpp; sourceTree = SOURCE_ROOT; };
-		E1D4768D202C180E009F2EDA /* Paddle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Paddle.hpp; sourceTree = SOURCE_ROOT; };
-		E1D4768F202C1837009F2EDA /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = SOURCE_ROOT; };
-		E1D47690202C1837009F2EDA /* Ball.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ball.hpp; sourceTree = SOURCE_ROOT; };
-		E1D47692202C184A009F2EDA /* Bound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bound.cpp; sourceTree = SOURCE_ROOT; };
-		E1D47693202C184A009F2EDA /* Bound.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bound.hpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,16 +72,16 @@
 		E1888F2B202C14F4002E3A2D /* Ping Pong */ = {
 			isa = PBXGroup;
 			children = (
-				E1D47686202C1538009F2EDA /* Communication Protocol.cpp */,
-				E1D47687202C1538009F2EDA /* Communication Protocol.hpp */,
-				E1D47688202C1538009F2EDA /* Game Engine.cpp */,
-				E1D47689202C1538009F2EDA /* Game Engine.hpp */,
-				E1D4768C202C180E009F2EDA /* Paddle.cpp */,
-				E1D4768D202C180E009F2EDA /* Paddle.hpp */,
-				E1D4768F202C1837009F2EDA /* Ball.cpp */,
-				E1D47690202C1837009F2EDA /* Ball.hpp */,
-				E1D47692202C184A009F2EDA /* Bound.cpp */,
-				E1D47693202C184A009F2EDA /* Bound.hpp */,
+				E165A1CE202CFF4E0027B0DE /* Ball.cpp */,
+				E165A1CF202CFF4E0027B0DE /* Ball.hpp */,
+				E165A1D0202CFF4E0027B0DE /* Bound.cpp */,
+				E165A1D1202CFF4E0027B0DE /* Bound.hpp */,
+				E165A1D2202CFF4E0027B0DE /* Communication Protocol.cpp */,
+				E165A1D3202CFF4E0027B0DE /* Communication Protocol.hpp */,
+				E165A1D4202CFF4E0027B0DE /* Game Engine.cpp */,
+				E165A1D5202CFF4E0027B0DE /* Game Engine.hpp */,
+				E165A1D6202CFF4E0027B0DE /* Paddle.cpp */,
+				E165A1D7202CFF4E0027B0DE /* Paddle.hpp */,
 				E1888F2C202C14F4002E3A2D /* main.cpp */,
 			);
 			path = "Ping Pong";
@@ -144,12 +144,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1D47694202C184A009F2EDA /* Bound.cpp in Sources */,
 				E1888F2D202C14F4002E3A2D /* main.cpp in Sources */,
-				E1D4768E202C180E009F2EDA /* Paddle.cpp in Sources */,
-				E1D4768B202C1538009F2EDA /* Game Engine.cpp in Sources */,
-				E1D4768A202C1538009F2EDA /* Communication Protocol.cpp in Sources */,
-				E1D47691202C1837009F2EDA /* Ball.cpp in Sources */,
+				E165A1D9202CFF4E0027B0DE /* Bound.cpp in Sources */,
+				E165A1DB202CFF4E0027B0DE /* Game Engine.cpp in Sources */,
+				E165A1DC202CFF4E0027B0DE /* Paddle.cpp in Sources */,
+				E165A1DA202CFF4E0027B0DE /* Communication Protocol.cpp in Sources */,
+				E165A1D8202CFF4E0027B0DE /* Ball.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
