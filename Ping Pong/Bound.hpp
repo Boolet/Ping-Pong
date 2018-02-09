@@ -24,12 +24,18 @@ public:
         top, bottom, right, left, none
     };
     
-    bool isIntersecting(Bounds other);
-    side intersectionSide(Bounds other);
+    bool isIntersecting(Bounds* other);
+    side intersectionSide(Bounds* other);
+    virtual void onCollision(Bounds* other, side onSide);
+    virtual void onTick(double deltaTime){};
+    void onEndFrame();
     
 protected:
     float xPos, yPos, width, height;
-    Bounds intersectionArea(Bounds other);
+    std::vector<Bounds*> intersectLastFrame;
+    std::vector<Bounds*> intersectors;
+    
+    Bounds intersectionArea(Bounds* other);
     
     
     

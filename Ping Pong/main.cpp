@@ -18,15 +18,19 @@
 #include <sys/time.h> //FD_SET, FD_ISSET, FD_ZERO macros
 #include <pthread.h>
 #include <iostream>
+#include "Game Engine.hpp"
 
 #define TRUE   1
 #define FALSE  0
 #define PORT 8888
+#define PLAY_WIDTH 500
+#define PLAY_HEIGHT 500
+
+GameEngine engine(PLAY_WIDTH, PLAY_HEIGHT);
 
 void* gameEngineThread(){
-    while(TRUE){
-        
-    }
+    engine.Run();
+    return nullptr;
 }
 
 int main(int argc , char *argv[])
