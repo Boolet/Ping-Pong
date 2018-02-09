@@ -1,0 +1,85 @@
+#include "Paddle.hpp"
+#include "Ball.hpp"
+Paddle pad1(0,0,0,0);
+
+void onCollision(Ball ball){
+    if (ball.xAxis == pad1.xAxis && ball.yAxis == pad1.yAxis)
+    {
+        pad1.consec_hits +=1;
+
+    }
+}
+#ifndef Paddle_hpp
+#define Paddle_hpp
+
+#include <stdio.h>
+#include "Bound.hpp"
+
+class Paddle : public Bounds{
+public:
+    Paddle(float x, float y, float w, float h):Bounds(x,y,w,h){}
+    int score;
+    int consec_hits;
+
+
+};
+
+#endif /* Paddle_hpp */
+#include "Ball.hpp"
+#include <stdlib.h>
+void Ball::onTick(double deltaTime){
+    xPos += xVelocity * deltaTime;
+    yPos += yVelocity * deltaTime;
+}
+
+float Ball::get_angle(){return this->angle;}
+
+std::pair<int,int> Ball ::get_location() {return this->location;}
+void Ball::set_angle(float a) {angle = a;}
+void Ball::randomize_angle() {2*3.141592653* rand();}
+
+void Ball::onCollision(Bounds* other, side onSide){
+    Bounds::onCollision(other, onSide);
+    switch (onSide) {
+        case Bounds::top:
+            yVelocity = -std::abs(yVelocity);
+            break;
+        case Bounds::right:
+            xVelocity = -std::abs(xVelocity);
+            break;
+        case Bounds::bottom:
+            yVelocity = std::abs(yVelocity);
+            break;
+        case Bounds::left:
+            xVelocity = std::abs(xVelocity);
+            break;
+        default:
+            break;
+    }
+}
+
+#ifndef Ball_hpp
+#define Ball_hpp
+
+#include <stdio.h>
+#include <cmath>
+#include "Bound.hpp"
+
+class Ball : public Bounds{
+public:
+    Ball(float x, float y):Bounds(x,y,1,1){}
+    void onTick(double deltaTime) override;
+    void onCollision(Bounds* other, side onSide) override;
+    std :: pair <int,int> location;
+    float angle;
+
+    float get_angle();
+    std:: pair<int,int> get_location();
+    void set_angle(float a);
+    void randomize_angle(); // randomizes angle and location = center of screen
+
+private:
+    float xVelocity, yVelocity;
+};
+
+#endif /* Ball_hpp */
