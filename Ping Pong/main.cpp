@@ -28,7 +28,7 @@
 
 GameEngine engine(PLAY_WIDTH, PLAY_HEIGHT);
 
-void* gameEngineThread(){
+void* gameEngineThread(void* args){
     engine.Run();
     return nullptr;
 }
@@ -97,7 +97,7 @@ int main(int argc , char *argv[])
 
     //RUN THE GAME ENGINE HERE
     pthread_t gameEngine;
-    //pthread_create(&gameEngine, NULL, gameEngineThread, NULL);
+    pthread_create(&gameEngine, NULL, gameEngineThread, NULL);
     
     while(TRUE)
     {

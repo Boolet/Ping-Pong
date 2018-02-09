@@ -5,7 +5,6 @@
 #include <unistd.h>
 #include "Paddle.hpp"
 #include "Ball.hpp"
-#include <time.h>
 #include <chrono>
 
 #define MILLISECONDS_TO_SECONDS 0.000001
@@ -26,6 +25,7 @@ private:
     time_t timer;
     double localTime = 0;
     double timeLastFrame = 0;
+    double deltaTime = 0;
     
     void GameTick(double deltaTime);
     

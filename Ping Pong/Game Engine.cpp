@@ -22,12 +22,18 @@ ball(width, height)
 void GameEngine::Run(){
     localTime = std::chrono::duration_cast< std::chrono::milliseconds >(
                 std::chrono::system_clock::now().time_since_epoch()).count();
+    
     while(true){
-        timeLastFrame = localTime;
+        if(deltaTime > 0)   //if there was an update last frame, then update the time of last frame
+            timeLastFrame = localTime;
+        
         usleep(1000);
         localTime = std::chrono::duration_cast< std::chrono::milliseconds >(
                     std::chrono::system_clock::now().time_since_epoch()).count();
-        GameTick((localTime - timeLastFrame) * MILLISECONDS_TO_SECONDS);
+        deltaTime = localTime - timeLastFrame;
+        
+        if(deltaTime > 0)   //will need to also prevent 'timeLastFrame' from being updated when not in this case
+            GameTick(deltaTime * MILLISECONDS_TO_SECONDS);
     }
 }
 
