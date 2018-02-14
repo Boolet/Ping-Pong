@@ -22,10 +22,12 @@ Bounds::side Bounds::intersectionSide(Bounds* other){
         return none;
     
     Bounds collisionArea = intersectionArea(other);
+    /*
     std::cout << "other xPos: " << other->xPos << ", yPos: " << other->yPos <<
     ", width: " << other->width << ", height: " << other->height << std::endl;
     std::cout << "collision overlap xPos: " << collisionArea.xPos << ", yPos: " << collisionArea.yPos <<
     ", width: " << collisionArea.width << ", height: " << collisionArea.height << std::endl;
+     */
     
     if(collisionArea.width > collisionArea.height){
         //top or bottom
