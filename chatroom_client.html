@@ -30,7 +30,7 @@
 
         function connect(){
             log('Connecting...');
-			Server = new FancyWebSocket('ws://' + document.getElementById('ip').value + ':' + document.querySelector('input[name="channel"]:checked').value);
+			Server = new FancyWebSocket('ws://' + document.getElementById('ip').value + ':' +document.getElementByID('port').value +':' + document.querySelector('input[name="channel"]:checked').value);
 
 			$('#message').keypress(function(e) {
 				if ( e.keyCode == 13 && this.value ) {
@@ -155,7 +155,7 @@
         Player ID: <input type='text' id='PlayerID' name='PlayerID'>
         Server ip: <input type='text' id='ip' name='ip'>
 
-        <!--Server port: <input type='text' id='port' name='port'>-->
+        Server port: <input type='text' id='port' name='port'>
         <button type="button" id='cntBtn' onclick="connect();">Connect</button>
         <button type="button" id='dscBtn' onclick="disconnect();">Disconnect</button> <br />
         <!--Channel/Port 1 <input type="radio" name="channel" value="8000" /> &nbsp;-->
