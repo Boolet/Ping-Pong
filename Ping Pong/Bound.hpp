@@ -3,10 +3,13 @@
 
 #include <stdio.h>
 #include <vector>
+#include <iostream>
+
+#define DEFAULT_NAME "Default"
 
 class Bounds{
 public:
-    Bounds(float x, float y, float w, float h){
+    Bounds(double x, double y, double w, double h, std::string newName = DEFAULT_NAME){
         //top left corner coordinates
         xPos = x;
         yPos = y;
@@ -14,6 +17,8 @@ public:
         //bottom right offset
         width = w;
         height = h;
+        
+        name = newName;
     }
     
     enum axis{
@@ -24,6 +29,13 @@ public:
         top, bottom, right, left, none
     };
     
+    
+    std::string getName(){return name;}
+    double getX(){return xPos;}
+    double getY(){return yPos;}
+    double getWidth(){return width;}
+    double getHeight(){return height;}
+    
     bool isIntersecting(Bounds* other);
     side intersectionSide(Bounds* other);
     virtual void onCollision(Bounds* other, side onSide);
@@ -31,7 +43,8 @@ public:
     void onEndFrame();
     
 protected:
-    float xPos, yPos, width, height;
+    double xPos, yPos, width, height;
+    std::string name = DEFAULT_NAME;
     std::vector<Bounds*> intersectLastFrame;
     std::vector<Bounds*> intersectors;
     

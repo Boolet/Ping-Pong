@@ -19,6 +19,7 @@
 #include <pthread.h>
 #include <iostream>
 #include "Game Engine.hpp"
+#include "Communication Protocol.hpp"
 
 #define TRUE   1
 #define FALSE  0
@@ -123,6 +124,13 @@ int main(int argc , char *argv[])
                 max_sd = sd;
         }
         
+        /*
+         The line below needs to be changed to have a finite timeout.
+         Once that change is made, clients can be updated any time by
+         sending them the result of
+            std::string JSONData = MessageHandler.JSONFromBounds(engine.getColliderData());
+         */
+        
         //wait for an activity on one of the sockets , timeout is NULL ,
         //so wait indefinitely
         activity = select( max_sd + 1 , &readfds , NULL , NULL , NULL);
@@ -190,6 +198,9 @@ int main(int argc , char *argv[])
                     client_socket[i] = 0;
                 }
                 
+                /*
+                 In the below section is where we should be reading the incoming data
+                */
                 //Echo back the message that came in
                 else
                 {

@@ -7,12 +7,12 @@
 
 class Ball : public Bounds{
 public:
-    Ball(float x, float y):Bounds(x,y,1,1){}
+    Ball(double x, double y):Bounds(x,y,1,1,"ball"), xVelocity(0), yVelocity(50){}
     void onTick(double deltaTime) override;
     void onCollision(Bounds* other, side onSide) override;
     
 private:
-    float xVelocity, yVelocity;
+    double xVelocity, yVelocity;
 };
 
 #endif /* Ball_hpp */

@@ -6,13 +6,16 @@
 #include "Paddle.hpp"
 #include "Ball.hpp"
 #include <chrono>
+#include <iostream>
 
-#define MILLISECONDS_TO_SECONDS 0.000001
+#define MILLISECONDS_TO_SECONDS 0.001
 
 class GameEngine{
 public:
     GameEngine(float width, float height);
     void Run();
+    
+    std::vector<Bounds*> getColliderData(){return ballColliders;}
     
 private:
     float gameWidth, gameHeight;
@@ -23,6 +26,7 @@ private:
     std::vector<Bounds*> ballColliders;
     
     time_t timer;
+    double startTime = 0;
     double localTime = 0;
     double timeLastFrame = 0;
     double deltaTime = 0;

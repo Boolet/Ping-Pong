@@ -8,10 +8,13 @@ bool Bounds::isIntersecting(Bounds* other){
 }
 
 Bounds Bounds::intersectionArea(Bounds* other){
-    return Bounds(std::max(xPos, other->xPos),
-                  std::max(yPos, other->yPos),
-                  std::min(xPos+width,other->xPos+other->width),
-                  std::min(yPos+height,other->yPos+other->height));
+    double left = std::max(xPos, other->xPos);
+    double top = std::max(yPos, other->yPos);
+    
+    return Bounds(left,
+                  top,
+                  std::min(xPos+width,other->xPos+other->width) - left,
+                  std::min(yPos+height,other->yPos+other->height) - top);
 }
 
 Bounds::side Bounds::intersectionSide(Bounds* other){
@@ -19,6 +22,10 @@ Bounds::side Bounds::intersectionSide(Bounds* other){
         return none;
     
     Bounds collisionArea = intersectionArea(other);
+    std::cout << "other xPos: " << other->xPos << ", yPos: " << other->yPos <<
+    ", width: " << other->width << ", height: " << other->height << std::endl;
+    std::cout << "collision overlap xPos: " << collisionArea.xPos << ", yPos: " << collisionArea.yPos <<
+    ", width: " << collisionArea.width << ", height: " << collisionArea.height << std::endl;
     
     if(collisionArea.width > collisionArea.height){
         //top or bottom
@@ -34,6 +41,7 @@ Bounds::side Bounds::intersectionSide(Bounds* other){
 }
 
 void Bounds::onCollision(Bounds* other, side onSide){
+    std::cout << "Collided!" << std::endl;
     intersectors.push_back(other);
 }
 
