@@ -27,12 +27,14 @@
 #define PLAY_WIDTH 500
 #define PLAY_HEIGHT 500
 
+/*
 GameEngine engine(PLAY_WIDTH, PLAY_HEIGHT);
 
 void* gameEngineThread(void* args){
     engine.Run();
     return nullptr;
 }
+ */
 
 int main(int argc , char *argv[])
 {
@@ -97,8 +99,8 @@ int main(int argc , char *argv[])
     puts("Waiting for connections ...");
 
     //RUN THE GAME ENGINE HERE
-    pthread_t gameEngine;
-    pthread_create(&gameEngine, NULL, gameEngineThread, NULL);
+    //pthread_t gameEngine;
+    //pthread_create(&gameEngine, NULL, gameEngineThread, NULL);
     
     while(TRUE)
     {
@@ -216,11 +218,11 @@ int main(int argc , char *argv[])
     
     //Rejoin the game engine thread
     void*  status;
-    int rc = pthread_join(gameEngine, &status);
-    if (rc) {
-        printf("Error:unable to join, %i", rc);
-        exit(-1);
-    }
+    //int rc = pthread_join(gameEngine, &status);
+    //if (rc) {
+        //printf("Error:unable to join, %i", rc);
+        //exit(-1);
+    //}
     
     return 0;
 }
