@@ -43,7 +43,7 @@ Bounds::side Bounds::intersectionSide(Bounds* other){
 }
 
 void Bounds::onCollision(Bounds* other, side onSide){
-    std::cout << "Collided!" << std::endl;
+    //std::cout << "Collided!" << std::endl;
     intersectors.push_back(other);
 }
 

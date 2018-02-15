@@ -14,19 +14,17 @@
 #elif _WIN32
 #include <WinSock2.h>
 #include <ws2tcpip.h>
+#else
+#include <arpa/inet.h>
+#include <unistd.h>   //close
+#include <sys/types.h>
+#include <sys/socket.h>
 #endif
 
 #include <stdio.h>
 #include <string.h>   //strlen
 #include <stdlib.h>
 #include <errno.h>
-#include <unistd.h>   //close
-#include <arpa/inet.h>    //close
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <sys/time.h> //FD_SET, FD_ISSET, FD_ZERO macros
-#include <pthread.h>
 #include <iostream>
 #include <string>
 #include <vector>

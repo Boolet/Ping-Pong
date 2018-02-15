@@ -11,7 +11,6 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <sys/types.h>
-#include <unistd.h>
 #include <ifaddrs.h>
 #elif _WIN32
 #include <WinSock2.h>

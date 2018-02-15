@@ -10,19 +10,19 @@ void Ball::onCollision(Bounds* other, side onSide){
     Bounds::onCollision(other, onSide);
     switch (onSide) {
         case Bounds::top:
-            std::cout << "top of ball" << std::endl;
+            std::cout << "top of ball!" << std::endl;
             yVelocity = std::abs(yVelocity);
             break;
         case Bounds::right:
-            std::cout << "right of ball" << std::endl;
+            std::cout << "right of ball!" << std::endl;
             xVelocity = -std::abs(xVelocity);
             break;
         case Bounds::bottom:
-            std::cout << "bottom of ball" << std::endl;
+            std::cout << "bottom of ball!" << std::endl;
             yVelocity = -std::abs(yVelocity);
             break;
         case Bounds::left:
-            std::cout << "left of ball" << std::endl;
+            std::cout << "left of ball!" << std::endl;
             xVelocity = std::abs(xVelocity);
             break;
         default:

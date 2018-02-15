@@ -35,7 +35,7 @@
             BlueprintIdentifier = "E1A7605F2035782300DB106B"
             BuildableName = "Learning Sockets"
             BlueprintName = "Learning Sockets"
-            ReferencedContainer = "container:Learning Sockets.xcodeproj">
+            ReferencedContainer = "container:Websocket Game Server.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "E1A7605F2035782300DB106B"
             BuildableName = "Learning Sockets"
             BlueprintName = "Learning Sockets"
-            ReferencedContainer = "container:Learning Sockets.xcodeproj">
+            ReferencedContainer = "container:Websocket Game Server.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

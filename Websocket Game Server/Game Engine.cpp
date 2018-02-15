@@ -10,11 +10,11 @@ bottomWall(0, height, width, 1),
 playerOne(width-1, height-1, 3, 1),
 ball(width/2, height/2)
 {
-    //ballColliders.push_back(&leftWall);
+    ballColliders.push_back(&leftWall);
     ballColliders.push_back(&topWall);
-    //ballColliders.push_back(&rightWall);
+    ballColliders.push_back(&rightWall);
     ballColliders.push_back(&bottomWall);
-    //ballColliders.push_back(&playerOne);
+    ballColliders.push_back(&playerOne);
     ballColliders.push_back(&ball);
     
     startTime = localTime = timeLastFrame = std::chrono::duration_cast< std::chrono::milliseconds >(

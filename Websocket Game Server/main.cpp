@@ -24,6 +24,55 @@
 webSocket server;
 GameEngine* engine;
 
+void initGameEngine(){
+    engine = new GameEngine(PLAY_WIDTH, PLAY_HEIGHT);
+}
+
+void stepGameEngine(double deltaTime){
+    engine->ManualTick(deltaTime);
+}
+
+std::string gameDataJSON(){
+    return MessageHandler::JSONFromBounds(engine->getColliderData());
+}
+
+void sendGameData(){
+    std::string data = gameDataJSON();
+    
+    std::vector<int> clientIDs = server.getClientIDs();
+    for (int i = 0; i < clientIDs.size(); i++)
+        server.wsSend(clientIDs[i], data);
+}
+
+void sendTime(time_t current){
+    std::ostringstream os;
+    std::string timestring = ctime(&current);
+    timestring = timestring.substr(0, timestring.size() - 1);
+    os << timestring;
+    
+    std::vector<int> clientIDs = server.getClientIDs();
+    for (int i = 0; i < clientIDs.size(); i++)
+        server.wsSend(clientIDs[i], os.str());
+}
+
+
+void recieveMessage(int clientID, std::string message){
+    std::ostringstream os;
+    os << "Stranger " << clientID << " says: " << message;
+    
+    std::vector<int> clientIDs = server.getClientIDs();
+    for (int i = 0; i < clientIDs.size(); i++){
+        if (clientIDs[i] != clientID)
+            server.wsSend(clientIDs[i], os.str());
+    }
+}
+
+void updateGameData(MessageHandler::userInput inputData){
+    
+}
+
+
+
 /* called when a client connects */
 void openHandler(int clientID){
     std::ostringstream os;
@@ -59,37 +108,6 @@ void messageHandler(int clientID, std::string message){
         if (clientIDs[i] != clientID)
             server.wsSend(clientIDs[i], os.str());
     }
-}
-
-void initGameEngine(){
-    engine = new GameEngine(PLAY_WIDTH, PLAY_HEIGHT);
-}
-
-void stepGameEngine(double deltaTime){
-    engine->ManualTick(deltaTime);
-}
-
-std::string gameDataJSON(){
-    return MessageHandler::JSONFromBounds(engine->getColliderData());
-}
-
-void sendGameData(){
-    std::string data = gameDataJSON();
-    
-    std::vector<int> clientIDs = server.getClientIDs();
-    for (int i = 0; i < clientIDs.size(); i++)
-        server.wsSend(clientIDs[i], data);
-}
-
-void sendTime(time_t current){
-    std::ostringstream os;
-    std::string timestring = ctime(&current);
-    timestring = timestring.substr(0, timestring.size() - 1);
-    os << timestring;
-    
-    std::vector<int> clientIDs = server.getClientIDs();
-    for (int i = 0; i < clientIDs.size(); i++)
-        server.wsSend(clientIDs[i], os.str());
 }
 
 /* called once per select() loop */
