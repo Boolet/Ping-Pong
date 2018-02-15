@@ -9,7 +9,12 @@
 
 class MessageHandler{
 public:
+    struct userInput{
+        float deltaX;
+    };
+    
     static std::string JSONFromBounds(std::vector<Bounds*> objects);
+    static userInput userInputFromJSON(std::string JSONInput);
 };
 
 #endif /* Communication_Protocol_hpp */

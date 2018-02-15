@@ -31,3 +31,18 @@ std::string MessageHandler::JSONFromBounds(std::vector<Bounds*> objects){
    return strbuf.GetString();
     
 }
+
+MessageHandler::userInput MessageHandler::userInputFromJSON(std::string JSONInput){
+    rapidjson::Document document;
+    document.Parse(JSONInput.c_str());
+    
+    assert(document.IsObject());
+    assert(document.HasMember("deltaX"));
+    assert(document["deltaX"].IsFloat());
+    
+    userInput data;
+    data.deltaX = document["deltaX"].GetFloat();
+    
+    return data;
+    
+}

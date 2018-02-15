@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E1A760642035782300DB106B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A760632035782300DB106B /* main.cpp */; };
-		E1A7606C203579F400DB106B /* websocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7606A203579F400DB106B /* websocket.cpp */; };
-		E1A7607120357CA100DB106B /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7606D20357CA100DB106B /* base64.cpp */; };
-		E1A7607220357CA100DB106B /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7606F20357CA100DB106B /* sha1.cpp */; };
-		E1A760A520357F0700DB106B /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7607320357F0700DB106B /* Ball.cpp */; };
-		E1A760A620357F0700DB106B /* Bound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7607520357F0700DB106B /* Bound.cpp */; };
-		E1A760A720357F0700DB106B /* Communication Protocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7607720357F0700DB106B /* Communication Protocol.cpp */; };
-		E1A760A820357F0700DB106B /* Game Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7607920357F0700DB106B /* Game Engine.cpp */; };
-		E1A760A920357F0700DB106B /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7607B20357F0700DB106B /* Paddle.cpp */; };
+		E1A43F5320364ABF0062823C /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F1A20364ABF0062823C /* Ball.cpp */; };
+		E1A43F5420364ABF0062823C /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F1C20364ABF0062823C /* base64.cpp */; };
+		E1A43F5520364ABF0062823C /* Bound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F1E20364ABF0062823C /* Bound.cpp */; };
+		E1A43F5620364ABF0062823C /* Communication Protocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F2020364ABF0062823C /* Communication Protocol.cpp */; };
+		E1A43F5720364ABF0062823C /* Game Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F2220364ABF0062823C /* Game Engine.cpp */; };
+		E1A43F5820364ABF0062823C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F2420364ABF0062823C /* main.cpp */; };
+		E1A43F5920364ABF0062823C /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F2520364ABF0062823C /* Paddle.cpp */; };
+		E1A43F5A20364ABF0062823C /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F4F20364ABF0062823C /* sha1.cpp */; };
+		E1A43F5B20364ABF0062823C /* websocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F5120364ABF0062823C /* websocket.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,60 +31,60 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E1A43F1A20364ABF0062823C /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ball.cpp; path = "Websocket Game Server/Ball.cpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F1B20364ABF0062823C /* Ball.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Ball.hpp; path = "Websocket Game Server/Ball.hpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F1C20364ABF0062823C /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = base64.cpp; path = "Websocket Game Server/base64.cpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F1D20364ABF0062823C /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base64.h; path = "Websocket Game Server/base64.h"; sourceTree = SOURCE_ROOT; };
+		E1A43F1E20364ABF0062823C /* Bound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bound.cpp; path = "Websocket Game Server/Bound.cpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F1F20364ABF0062823C /* Bound.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Bound.hpp; path = "Websocket Game Server/Bound.hpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F2020364ABF0062823C /* Communication Protocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "Communication Protocol.cpp"; path = "Websocket Game Server/Communication Protocol.cpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F2120364ABF0062823C /* Communication Protocol.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = "Communication Protocol.hpp"; path = "Websocket Game Server/Communication Protocol.hpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F2220364ABF0062823C /* Game Engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "Game Engine.cpp"; path = "Websocket Game Server/Game Engine.cpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F2320364ABF0062823C /* Game Engine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = "Game Engine.hpp"; path = "Websocket Game Server/Game Engine.hpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F2420364ABF0062823C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "Websocket Game Server/main.cpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F2520364ABF0062823C /* Paddle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Paddle.cpp; path = "Websocket Game Server/Paddle.cpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F2620364ABF0062823C /* Paddle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Paddle.hpp; path = "Websocket Game Server/Paddle.hpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F2820364ABF0062823C /* allocators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allocators.h; sourceTree = "<group>"; };
+		E1A43F2920364ABF0062823C /* cursorstreamwrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cursorstreamwrapper.h; sourceTree = "<group>"; };
+		E1A43F2A20364ABF0062823C /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = document.h; sourceTree = "<group>"; };
+		E1A43F2B20364ABF0062823C /* encodedstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encodedstream.h; sourceTree = "<group>"; };
+		E1A43F2C20364ABF0062823C /* encodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encodings.h; sourceTree = "<group>"; };
+		E1A43F2E20364ABF0062823C /* en.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = en.h; sourceTree = "<group>"; };
+		E1A43F2F20364ABF0062823C /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
+		E1A43F3020364ABF0062823C /* filereadstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filereadstream.h; sourceTree = "<group>"; };
+		E1A43F3120364ABF0062823C /* filewritestream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filewritestream.h; sourceTree = "<group>"; };
+		E1A43F3220364ABF0062823C /* fwd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fwd.h; sourceTree = "<group>"; };
+		E1A43F3420364ABF0062823C /* biginteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = biginteger.h; sourceTree = "<group>"; };
+		E1A43F3520364ABF0062823C /* diyfp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diyfp.h; sourceTree = "<group>"; };
+		E1A43F3620364ABF0062823C /* dtoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dtoa.h; sourceTree = "<group>"; };
+		E1A43F3720364ABF0062823C /* ieee754.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ieee754.h; sourceTree = "<group>"; };
+		E1A43F3820364ABF0062823C /* itoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = itoa.h; sourceTree = "<group>"; };
+		E1A43F3920364ABF0062823C /* meta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = meta.h; sourceTree = "<group>"; };
+		E1A43F3A20364ABF0062823C /* pow10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pow10.h; sourceTree = "<group>"; };
+		E1A43F3B20364ABF0062823C /* regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = regex.h; sourceTree = "<group>"; };
+		E1A43F3C20364ABF0062823C /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		E1A43F3D20364ABF0062823C /* strfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strfunc.h; sourceTree = "<group>"; };
+		E1A43F3E20364ABF0062823C /* strtod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strtod.h; sourceTree = "<group>"; };
+		E1A43F3F20364ABF0062823C /* swap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swap.h; sourceTree = "<group>"; };
+		E1A43F4020364ABF0062823C /* istreamwrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = istreamwrapper.h; sourceTree = "<group>"; };
+		E1A43F4120364ABF0062823C /* memorybuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memorybuffer.h; sourceTree = "<group>"; };
+		E1A43F4220364ABF0062823C /* memorystream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memorystream.h; sourceTree = "<group>"; };
+		E1A43F4420364ABF0062823C /* inttypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inttypes.h; sourceTree = "<group>"; };
+		E1A43F4520364ABF0062823C /* stdint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdint.h; sourceTree = "<group>"; };
+		E1A43F4620364ABF0062823C /* ostreamwrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ostreamwrapper.h; sourceTree = "<group>"; };
+		E1A43F4720364ABF0062823C /* pointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pointer.h; sourceTree = "<group>"; };
+		E1A43F4820364ABF0062823C /* prettywriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prettywriter.h; sourceTree = "<group>"; };
+		E1A43F4920364ABF0062823C /* rapidjson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rapidjson.h; sourceTree = "<group>"; };
+		E1A43F4A20364ABF0062823C /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
+		E1A43F4B20364ABF0062823C /* schema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = schema.h; sourceTree = "<group>"; };
+		E1A43F4C20364ABF0062823C /* stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stream.h; sourceTree = "<group>"; };
+		E1A43F4D20364ABF0062823C /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
+		E1A43F4E20364ABF0062823C /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
+		E1A43F4F20364ABF0062823C /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sha1.cpp; path = "Websocket Game Server/sha1.cpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F5020364ABF0062823C /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = "Websocket Game Server/sha1.h"; sourceTree = SOURCE_ROOT; };
+		E1A43F5120364ABF0062823C /* websocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = websocket.cpp; path = "Websocket Game Server/websocket.cpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F5220364ABF0062823C /* websocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = websocket.hpp; path = "Websocket Game Server/websocket.hpp"; sourceTree = SOURCE_ROOT; };
 		E1A760602035782300DB106B /* Learning Sockets */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Learning Sockets"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1A760632035782300DB106B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		E1A7606A203579F400DB106B /* websocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = websocket.cpp; sourceTree = "<group>"; };
-		E1A7606B203579F400DB106B /* websocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = websocket.hpp; sourceTree = "<group>"; };
-		E1A7606D20357CA100DB106B /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base64.cpp; sourceTree = "<group>"; };
-		E1A7606E20357CA100DB106B /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
-		E1A7606F20357CA100DB106B /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sha1.cpp; sourceTree = "<group>"; };
-		E1A7607020357CA100DB106B /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
-		E1A7607320357F0700DB106B /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
-		E1A7607420357F0700DB106B /* Ball.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ball.hpp; sourceTree = "<group>"; };
-		E1A7607520357F0700DB106B /* Bound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bound.cpp; sourceTree = "<group>"; };
-		E1A7607620357F0700DB106B /* Bound.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bound.hpp; sourceTree = "<group>"; };
-		E1A7607720357F0700DB106B /* Communication Protocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Communication Protocol.cpp"; sourceTree = "<group>"; };
-		E1A7607820357F0700DB106B /* Communication Protocol.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "Communication Protocol.hpp"; sourceTree = "<group>"; };
-		E1A7607920357F0700DB106B /* Game Engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Game Engine.cpp"; sourceTree = "<group>"; };
-		E1A7607A20357F0700DB106B /* Game Engine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "Game Engine.hpp"; sourceTree = "<group>"; };
-		E1A7607B20357F0700DB106B /* Paddle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Paddle.cpp; sourceTree = "<group>"; };
-		E1A7607C20357F0700DB106B /* Paddle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Paddle.hpp; sourceTree = "<group>"; };
-		E1A7607E20357F0700DB106B /* allocators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allocators.h; sourceTree = "<group>"; };
-		E1A7607F20357F0700DB106B /* cursorstreamwrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cursorstreamwrapper.h; sourceTree = "<group>"; };
-		E1A7608020357F0700DB106B /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = document.h; sourceTree = "<group>"; };
-		E1A7608120357F0700DB106B /* encodedstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encodedstream.h; sourceTree = "<group>"; };
-		E1A7608220357F0700DB106B /* encodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encodings.h; sourceTree = "<group>"; };
-		E1A7608420357F0700DB106B /* en.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = en.h; sourceTree = "<group>"; };
-		E1A7608520357F0700DB106B /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
-		E1A7608620357F0700DB106B /* filereadstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filereadstream.h; sourceTree = "<group>"; };
-		E1A7608720357F0700DB106B /* filewritestream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filewritestream.h; sourceTree = "<group>"; };
-		E1A7608820357F0700DB106B /* fwd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fwd.h; sourceTree = "<group>"; };
-		E1A7608A20357F0700DB106B /* biginteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = biginteger.h; sourceTree = "<group>"; };
-		E1A7608B20357F0700DB106B /* diyfp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diyfp.h; sourceTree = "<group>"; };
-		E1A7608C20357F0700DB106B /* dtoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dtoa.h; sourceTree = "<group>"; };
-		E1A7608D20357F0700DB106B /* ieee754.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ieee754.h; sourceTree = "<group>"; };
-		E1A7608E20357F0700DB106B /* itoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = itoa.h; sourceTree = "<group>"; };
-		E1A7608F20357F0700DB106B /* meta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = meta.h; sourceTree = "<group>"; };
-		E1A7609020357F0700DB106B /* pow10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pow10.h; sourceTree = "<group>"; };
-		E1A7609120357F0700DB106B /* regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = regex.h; sourceTree = "<group>"; };
-		E1A7609220357F0700DB106B /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
-		E1A7609320357F0700DB106B /* strfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strfunc.h; sourceTree = "<group>"; };
-		E1A7609420357F0700DB106B /* strtod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strtod.h; sourceTree = "<group>"; };
-		E1A7609520357F0700DB106B /* swap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swap.h; sourceTree = "<group>"; };
-		E1A7609620357F0700DB106B /* istreamwrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = istreamwrapper.h; sourceTree = "<group>"; };
-		E1A7609720357F0700DB106B /* memorybuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memorybuffer.h; sourceTree = "<group>"; };
-		E1A7609820357F0700DB106B /* memorystream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memorystream.h; sourceTree = "<group>"; };
-		E1A7609A20357F0700DB106B /* inttypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inttypes.h; sourceTree = "<group>"; };
-		E1A7609B20357F0700DB106B /* stdint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdint.h; sourceTree = "<group>"; };
-		E1A7609C20357F0700DB106B /* ostreamwrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ostreamwrapper.h; sourceTree = "<group>"; };
-		E1A7609D20357F0700DB106B /* pointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pointer.h; sourceTree = "<group>"; };
-		E1A7609E20357F0700DB106B /* prettywriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prettywriter.h; sourceTree = "<group>"; };
-		E1A7609F20357F0700DB106B /* rapidjson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rapidjson.h; sourceTree = "<group>"; };
-		E1A760A020357F0700DB106B /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
-		E1A760A120357F0700DB106B /* schema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = schema.h; sourceTree = "<group>"; };
-		E1A760A220357F0700DB106B /* stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stream.h; sourceTree = "<group>"; };
-		E1A760A320357F0700DB106B /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
-		E1A760A420357F0700DB106B /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +98,74 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E1A43F2720364ABF0062823C /* rapidjson */ = {
+			isa = PBXGroup;
+			children = (
+				E1A43F2820364ABF0062823C /* allocators.h */,
+				E1A43F2920364ABF0062823C /* cursorstreamwrapper.h */,
+				E1A43F2A20364ABF0062823C /* document.h */,
+				E1A43F2B20364ABF0062823C /* encodedstream.h */,
+				E1A43F2C20364ABF0062823C /* encodings.h */,
+				E1A43F2D20364ABF0062823C /* error */,
+				E1A43F3020364ABF0062823C /* filereadstream.h */,
+				E1A43F3120364ABF0062823C /* filewritestream.h */,
+				E1A43F3220364ABF0062823C /* fwd.h */,
+				E1A43F3320364ABF0062823C /* internal */,
+				E1A43F4020364ABF0062823C /* istreamwrapper.h */,
+				E1A43F4120364ABF0062823C /* memorybuffer.h */,
+				E1A43F4220364ABF0062823C /* memorystream.h */,
+				E1A43F4320364ABF0062823C /* msinttypes */,
+				E1A43F4620364ABF0062823C /* ostreamwrapper.h */,
+				E1A43F4720364ABF0062823C /* pointer.h */,
+				E1A43F4820364ABF0062823C /* prettywriter.h */,
+				E1A43F4920364ABF0062823C /* rapidjson.h */,
+				E1A43F4A20364ABF0062823C /* reader.h */,
+				E1A43F4B20364ABF0062823C /* schema.h */,
+				E1A43F4C20364ABF0062823C /* stream.h */,
+				E1A43F4D20364ABF0062823C /* stringbuffer.h */,
+				E1A43F4E20364ABF0062823C /* writer.h */,
+			);
+			name = rapidjson;
+			path = "Websocket Game Server/rapidjson";
+			sourceTree = SOURCE_ROOT;
+		};
+		E1A43F2D20364ABF0062823C /* error */ = {
+			isa = PBXGroup;
+			children = (
+				E1A43F2E20364ABF0062823C /* en.h */,
+				E1A43F2F20364ABF0062823C /* error.h */,
+			);
+			path = error;
+			sourceTree = "<group>";
+		};
+		E1A43F3320364ABF0062823C /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				E1A43F3420364ABF0062823C /* biginteger.h */,
+				E1A43F3520364ABF0062823C /* diyfp.h */,
+				E1A43F3620364ABF0062823C /* dtoa.h */,
+				E1A43F3720364ABF0062823C /* ieee754.h */,
+				E1A43F3820364ABF0062823C /* itoa.h */,
+				E1A43F3920364ABF0062823C /* meta.h */,
+				E1A43F3A20364ABF0062823C /* pow10.h */,
+				E1A43F3B20364ABF0062823C /* regex.h */,
+				E1A43F3C20364ABF0062823C /* stack.h */,
+				E1A43F3D20364ABF0062823C /* strfunc.h */,
+				E1A43F3E20364ABF0062823C /* strtod.h */,
+				E1A43F3F20364ABF0062823C /* swap.h */,
+			);
+			path = internal;
+			sourceTree = "<group>";
+		};
+		E1A43F4320364ABF0062823C /* msinttypes */ = {
+			isa = PBXGroup;
+			children = (
+				E1A43F4420364ABF0062823C /* inttypes.h */,
+				E1A43F4520364ABF0062823C /* stdint.h */,
+			);
+			path = msinttypes;
+			sourceTree = "<group>";
+		};
 		E1A760572035782300DB106B = {
 			isa = PBXGroup;
 			children = (
@@ -117,94 +185,27 @@
 		E1A760622035782300DB106B /* WebSocket Game Server */ = {
 			isa = PBXGroup;
 			children = (
-				E1A7607320357F0700DB106B /* Ball.cpp */,
-				E1A7607420357F0700DB106B /* Ball.hpp */,
-				E1A7607520357F0700DB106B /* Bound.cpp */,
-				E1A7607620357F0700DB106B /* Bound.hpp */,
-				E1A7607720357F0700DB106B /* Communication Protocol.cpp */,
-				E1A7607820357F0700DB106B /* Communication Protocol.hpp */,
-				E1A7607920357F0700DB106B /* Game Engine.cpp */,
-				E1A7607A20357F0700DB106B /* Game Engine.hpp */,
-				E1A7607B20357F0700DB106B /* Paddle.cpp */,
-				E1A7607C20357F0700DB106B /* Paddle.hpp */,
-				E1A7607D20357F0700DB106B /* rapidjson */,
-				E1A7606D20357CA100DB106B /* base64.cpp */,
-				E1A7606E20357CA100DB106B /* base64.h */,
-				E1A7606F20357CA100DB106B /* sha1.cpp */,
-				E1A7607020357CA100DB106B /* sha1.h */,
-				E1A760632035782300DB106B /* main.cpp */,
-				E1A7606A203579F400DB106B /* websocket.cpp */,
-				E1A7606B203579F400DB106B /* websocket.hpp */,
+				E1A43F1A20364ABF0062823C /* Ball.cpp */,
+				E1A43F1B20364ABF0062823C /* Ball.hpp */,
+				E1A43F1C20364ABF0062823C /* base64.cpp */,
+				E1A43F1D20364ABF0062823C /* base64.h */,
+				E1A43F1E20364ABF0062823C /* Bound.cpp */,
+				E1A43F1F20364ABF0062823C /* Bound.hpp */,
+				E1A43F2020364ABF0062823C /* Communication Protocol.cpp */,
+				E1A43F2120364ABF0062823C /* Communication Protocol.hpp */,
+				E1A43F2220364ABF0062823C /* Game Engine.cpp */,
+				E1A43F2320364ABF0062823C /* Game Engine.hpp */,
+				E1A43F2420364ABF0062823C /* main.cpp */,
+				E1A43F2520364ABF0062823C /* Paddle.cpp */,
+				E1A43F2620364ABF0062823C /* Paddle.hpp */,
+				E1A43F2720364ABF0062823C /* rapidjson */,
+				E1A43F4F20364ABF0062823C /* sha1.cpp */,
+				E1A43F5020364ABF0062823C /* sha1.h */,
+				E1A43F5120364ABF0062823C /* websocket.cpp */,
+				E1A43F5220364ABF0062823C /* websocket.hpp */,
 			);
 			name = "WebSocket Game Server";
 			path = "Learning Sockets";
-			sourceTree = "<group>";
-		};
-		E1A7607D20357F0700DB106B /* rapidjson */ = {
-			isa = PBXGroup;
-			children = (
-				E1A7607E20357F0700DB106B /* allocators.h */,
-				E1A7607F20357F0700DB106B /* cursorstreamwrapper.h */,
-				E1A7608020357F0700DB106B /* document.h */,
-				E1A7608120357F0700DB106B /* encodedstream.h */,
-				E1A7608220357F0700DB106B /* encodings.h */,
-				E1A7608320357F0700DB106B /* error */,
-				E1A7608620357F0700DB106B /* filereadstream.h */,
-				E1A7608720357F0700DB106B /* filewritestream.h */,
-				E1A7608820357F0700DB106B /* fwd.h */,
-				E1A7608920357F0700DB106B /* internal */,
-				E1A7609620357F0700DB106B /* istreamwrapper.h */,
-				E1A7609720357F0700DB106B /* memorybuffer.h */,
-				E1A7609820357F0700DB106B /* memorystream.h */,
-				E1A7609920357F0700DB106B /* msinttypes */,
-				E1A7609C20357F0700DB106B /* ostreamwrapper.h */,
-				E1A7609D20357F0700DB106B /* pointer.h */,
-				E1A7609E20357F0700DB106B /* prettywriter.h */,
-				E1A7609F20357F0700DB106B /* rapidjson.h */,
-				E1A760A020357F0700DB106B /* reader.h */,
-				E1A760A120357F0700DB106B /* schema.h */,
-				E1A760A220357F0700DB106B /* stream.h */,
-				E1A760A320357F0700DB106B /* stringbuffer.h */,
-				E1A760A420357F0700DB106B /* writer.h */,
-			);
-			path = rapidjson;
-			sourceTree = "<group>";
-		};
-		E1A7608320357F0700DB106B /* error */ = {
-			isa = PBXGroup;
-			children = (
-				E1A7608420357F0700DB106B /* en.h */,
-				E1A7608520357F0700DB106B /* error.h */,
-			);
-			path = error;
-			sourceTree = "<group>";
-		};
-		E1A7608920357F0700DB106B /* internal */ = {
-			isa = PBXGroup;
-			children = (
-				E1A7608A20357F0700DB106B /* biginteger.h */,
-				E1A7608B20357F0700DB106B /* diyfp.h */,
-				E1A7608C20357F0700DB106B /* dtoa.h */,
-				E1A7608D20357F0700DB106B /* ieee754.h */,
-				E1A7608E20357F0700DB106B /* itoa.h */,
-				E1A7608F20357F0700DB106B /* meta.h */,
-				E1A7609020357F0700DB106B /* pow10.h */,
-				E1A7609120357F0700DB106B /* regex.h */,
-				E1A7609220357F0700DB106B /* stack.h */,
-				E1A7609320357F0700DB106B /* strfunc.h */,
-				E1A7609420357F0700DB106B /* strtod.h */,
-				E1A7609520357F0700DB106B /* swap.h */,
-			);
-			path = internal;
-			sourceTree = "<group>";
-		};
-		E1A7609920357F0700DB106B /* msinttypes */ = {
-			isa = PBXGroup;
-			children = (
-				E1A7609A20357F0700DB106B /* inttypes.h */,
-				E1A7609B20357F0700DB106B /* stdint.h */,
-			);
-			path = msinttypes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,7 +243,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E1A7605B2035782300DB106B /* Build configuration list for PBXProject "Learning Sockets" */;
+			buildConfigurationList = E1A7605B2035782300DB106B /* Build configuration list for PBXProject "Websocket Game Server" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -264,15 +265,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1A760A820357F0700DB106B /* Game Engine.cpp in Sources */,
-				E1A760A620357F0700DB106B /* Bound.cpp in Sources */,
-				E1A760A720357F0700DB106B /* Communication Protocol.cpp in Sources */,
-				E1A760642035782300DB106B /* main.cpp in Sources */,
-				E1A760A920357F0700DB106B /* Paddle.cpp in Sources */,
-				E1A7606C203579F400DB106B /* websocket.cpp in Sources */,
-				E1A7607220357CA100DB106B /* sha1.cpp in Sources */,
-				E1A7607120357CA100DB106B /* base64.cpp in Sources */,
-				E1A760A520357F0700DB106B /* Ball.cpp in Sources */,
+				E1A43F5520364ABF0062823C /* Bound.cpp in Sources */,
+				E1A43F5B20364ABF0062823C /* websocket.cpp in Sources */,
+				E1A43F5420364ABF0062823C /* base64.cpp in Sources */,
+				E1A43F5820364ABF0062823C /* main.cpp in Sources */,
+				E1A43F5320364ABF0062823C /* Ball.cpp in Sources */,
+				E1A43F5620364ABF0062823C /* Communication Protocol.cpp in Sources */,
+				E1A43F5720364ABF0062823C /* Game Engine.cpp in Sources */,
+				E1A43F5A20364ABF0062823C /* sha1.cpp in Sources */,
+				E1A43F5920364ABF0062823C /* Paddle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +386,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E1A7605B2035782300DB106B /* Build configuration list for PBXProject "Learning Sockets" */ = {
+		E1A7605B2035782300DB106B /* Build configuration list for PBXProject "Websocket Game Server" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E1A760652035782300DB106B /* Debug */,
@@ -401,6 +402,7 @@
 				E1A760692035782300DB106B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
