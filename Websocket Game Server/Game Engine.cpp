@@ -17,6 +17,9 @@ ball(width/2, height/2)
     //ballColliders.push_back(&playerOne);
     ballColliders.push_back(&ball);
     
+    startTime = localTime = timeLastFrame = std::chrono::duration_cast< std::chrono::milliseconds >(
+               std::chrono::system_clock::now().time_since_epoch()).count();
+    
 }
 
 void GameEngine::Run(){
@@ -27,7 +30,7 @@ void GameEngine::Run(){
         if(deltaTime > 0)   //if there was an update last frame, then update the time of last frame
             timeLastFrame = localTime;
         
-        usleep(1000);
+        Sleep(1);
         localTime = std::chrono::duration_cast< std::chrono::milliseconds >(
                     std::chrono::system_clock::now().time_since_epoch()).count();
         deltaTime = localTime - timeLastFrame;
@@ -36,6 +39,22 @@ void GameEngine::Run(){
         if(deltaTime > 0)   //will need to also prevent 'timeLastFrame' from being updated when not in this case
             GameTick(deltaTime * MILLISECONDS_TO_SECONDS);
     }
+}
+
+void GameEngine::ManualTick(){
+    localTime = std::chrono::duration_cast< std::chrono::milliseconds >(
+                std::chrono::system_clock::now().time_since_epoch()).count();
+    
+    deltaTime = localTime - timeLastFrame;
+    if(deltaTime > 0)   //will need to also prevent 'timeLastFrame' from being updated when not in this case
+        GameTick(deltaTime * MILLISECONDS_TO_SECONDS);
+    
+    timeLastFrame = std::chrono::duration_cast< std::chrono::milliseconds >(
+                    std::chrono::system_clock::now().time_since_epoch()).count();
+}
+
+void GameEngine::ManualTick(double manualDeltaTime){
+    GameTick(deltaTime * MILLISECONDS_TO_SECONDS);
 }
 
 void GameEngine::GameTick(double deltaTime){

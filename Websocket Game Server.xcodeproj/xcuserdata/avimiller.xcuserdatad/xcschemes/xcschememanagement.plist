@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Ping Pong.xcscheme</key>
+		<key>Learning Sockets.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>E1888F28202C14F4002E3A2D</key>
+		<key>E1A7605F2035782300DB106B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

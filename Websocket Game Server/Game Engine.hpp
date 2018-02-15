@@ -1,8 +1,14 @@
 #ifndef Game_Engine_hpp
 #define Game_Engine_hpp
 
-#include <stdio.h>
+#ifdef _WINDOWS
+#include <windows.h>
+#else
 #include <unistd.h>
+#define Sleep(x) usleep((x)*1000)
+#endif
+
+#include <stdio.h>
 #include "Paddle.hpp"
 #include "Ball.hpp"
 #include <chrono>
@@ -14,6 +20,8 @@ class GameEngine{
 public:
     GameEngine(float width, float height);
     void Run();
+    void ManualTick(double manualDeltaTime);
+    void ManualTick();
     
     std::vector<Bounds*> getColliderData(){return ballColliders;}
     

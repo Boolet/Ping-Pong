@@ -1,3 +1,11 @@
+//
+//  websocket.cpp
+//  Learning Sockets
+//
+//  Created by Avi Miller on 2/15/18.
+//  Copyright © 2018 Avi Miller. All rights reserved.
+//
+
 #ifdef __linux__
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -22,103 +30,22 @@
 #include <string>
 #include <vector>
 #include <map>
-#include "websocket.h"
+#include "websocket.hpp"
 #include "base64.h"
 #include "sha1.h"
 
-using namespace std;
-
-void showAvailableIP(){
-
-#ifdef __linux__
-
-    char name[INET_ADDRSTRLEN];
-    struct ifaddrs *iflist;
-    if (getifaddrs(&iflist) < 0){
-        cout << "Error on getting available IP!" << endl;
-    }
-
-    cout << "Available IP:" << endl;
-
-    struct in_addr addr;
-    for (struct ifaddrs *p = iflist; p; p = p->ifa_next){
-        if (p->ifa_addr->sa_family == AF_INET){
-            addr = ((struct sockaddr_in*)p->ifa_addr)->sin_addr;
-            if (inet_ntop(AF_INET, &addr, name, sizeof(name)) == NULL)
-                continue;
-
-            cout << "    " << p->ifa_name << " " << name << endl;
-        }
-    }
-
-#elif _WIN32
-    
-    /* Variables used by GetIpAddrTable */
-    PMIB_IPADDRTABLE pIPAddrTable;
-    DWORD dwSize = 0;
-    DWORD dwRetVal = 0;
-    IN_ADDR IPAddr;
-
-    /* Variables used to return error message */
-    LPVOID lpMsgBuf;
-
-    // Before calling AddIPAddress we use GetIpAddrTable to get
-    // an adapter to which we can add the IP.
-    pIPAddrTable = (MIB_IPADDRTABLE *) MALLOC(sizeof (MIB_IPADDRTABLE));
-
-    if (pIPAddrTable) {
-        // Make an initial call to GetIpAddrTable to get the
-        // necessary size into the dwSize variable
-        if (GetIpAddrTable(pIPAddrTable, &dwSize, 0) ==
-            ERROR_INSUFFICIENT_BUFFER) {
-            FREE(pIPAddrTable);
-            pIPAddrTable = (MIB_IPADDRTABLE *) MALLOC(dwSize);
-
-        }
-        if (pIPAddrTable == NULL) {
-            printf("Memory allocation failed for GetIpAddrTable\n");
-            return;
-        }
-    }
-    // Make a second call to GetIpAddrTable to get the
-    // actual data we want
-    if ( (dwRetVal = GetIpAddrTable( pIPAddrTable, &dwSize, 0 )) != NO_ERROR ) { 
-        printf("GetIpAddrTable failed with error %d\n", dwRetVal);
-        if (FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, NULL, dwRetVal, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),       // Default language
-                          (LPTSTR) & lpMsgBuf, 0, NULL)) {
-            printf("\tError: %s", lpMsgBuf);
-            LocalFree(lpMsgBuf);
-        }
-        return;
-    }
-
-    cout << "Available IP:" << endl;
-
-    for (int i = 0; i < (int) pIPAddrTable->dwNumEntries; i++) {
-        IPAddr.S_un.S_addr = (u_long) pIPAddrTable->table[i].dwAddr;
-        cout << "    " << i << ": " << inet_ntoa(IPAddr) << endl;
-    }
-
-    if (pIPAddrTable) {
-        FREE(pIPAddrTable);
-        pIPAddrTable = NULL;
-    }
-
-#endif
-}
-
-vector<int> webSocket::getClientIDs(){
-    vector<int> clientIDs;
+std::vector<int> webSocket::getClientIDs(){
+    std::vector<int> clientIDs;
     for (int i = 0; i < wsClients.size(); i++){
         if (wsClients[i] != NULL)
-            clientIDs.push_back(i);    
+            clientIDs.push_back(i);
     }
-
+    
     return clientIDs;
 }
 
-string webSocket::getClientIP(int clientID){
-    return string(inet_ntoa(wsClients[clientID]->addr));
+std::string webSocket::getClientIP(int clientID){
+    return std::string(inet_ntoa(wsClients[clientID]->addr));
 }
 
 void webSocket::wsCheckIdleClients(){
@@ -143,39 +70,39 @@ void webSocket::wsCheckIdleClients(){
     }
 }
 
-bool webSocket::wsSendClientMessage(int clientID, unsigned char opcode, string message){
+bool webSocket::wsSendClientMessage(int clientID, unsigned char opcode, std::string message){
     // check if client ready state is already closing or closed
     if (clientID >= wsClients.size())
         return false;
-
+    
     if (wsClients[clientID]->ReadyState == WS_READY_STATE_CLOSING || wsClients[clientID]->ReadyState == WS_READY_STATE_CLOSED)
         return true;
-
+    
     // fetch message length
     int messageLength = message.size();
-
+    
     // set max payload length per frame
     int bufferSize = 4096;
-
+    
     // work out amount of frames to send, based on $bufferSize
     int frameCount = ceil((float)messageLength / bufferSize);
     if (frameCount == 0)
         frameCount = 1;
-
+    
     // set last frame variables
     int maxFrame = frameCount - 1;
     int lastFrameBufferLength = (messageLength % bufferSize) != 0 ? (messageLength % bufferSize) : (messageLength != 0 ? bufferSize : 0);
-
+    
     // loop around all frames to send
     for (int i = 0; i < frameCount; i++){
         // fetch fin, opcode and buffer length for frame
         unsigned char fin = i != maxFrame ? 0 : WS_FIN;
         opcode = i != 0 ? WS_OPCODE_CONTINUATION : opcode;
-
+        
         size_t bufferLength = i != maxFrame ? bufferSize : lastFrameBufferLength;
         char *buf;
         size_t totalLength;
-
+        
         // set payload length variables for frame
         if (bufferLength <= 125) {
             // int payloadLength = bufferLength;
@@ -211,7 +138,7 @@ bool webSocket::wsSendClientMessage(int clientID, unsigned char opcode, string m
             buf[9] = bufferLength;
             memcpy(buf+10, message.substr(i*bufferSize, bufferLength).c_str(), bufferLength);
         }
-
+        
         // send frame
         int left = totalLength;
         char *buf2 = buf;
@@ -219,20 +146,20 @@ bool webSocket::wsSendClientMessage(int clientID, unsigned char opcode, string m
             int sent = send(wsClients[clientID]->socket, buf2, left, 0);
             if (sent == -1)
                 return false;
-
+            
             left -= sent;
             if (sent > 0)
                 buf2 += sent;
         }
         while (left > 0);
-
+        
         delete buf;
     }
-
+    
     return true;
 }
 
-bool webSocket::wsSend(int clientID, string message, bool binary){
+bool webSocket::wsSend(int clientID, std::string message, bool binary){
     return wsSendClientMessage(clientID, binary ? WS_OPCODE_BINARY : WS_OPCODE_TEXT, message);
 }
 
@@ -240,13 +167,13 @@ void webSocket::wsSendClientClose(int clientID, unsigned short status){
     // check if client ready state is already closing or closed
     if (wsClients[clientID]->ReadyState == WS_READY_STATE_CLOSING || wsClients[clientID]->ReadyState == WS_READY_STATE_CLOSED)
         return;
-
+    
     // store close status
     wsClients[clientID]->ReadyState = status;
-
+    
     // send close frame to client
     wsSendClientMessage(clientID, WS_OPCODE_CLOSE, "");
-
+    
     // set client ready state to closing
     wsClients[clientID]->ReadyState = WS_READY_STATE_CLOSING;
 }
@@ -261,7 +188,7 @@ bool webSocket::wsCheckSizeClientFrame(int clientID){
     if (client->FrameBytesRead > 1) {
         // fetch payload length in byte 2, max will be 127
         size_t payloadLength = (unsigned char)client->FrameBuffer.at(1) & 127;
-
+        
         if (payloadLength <= 125){
             // actual payload length is <= 125
             client->FramePayloadDataLength = payloadLength;
@@ -272,7 +199,7 @@ bool webSocket::wsCheckSizeClientFrame(int clientID){
                 std::vector<unsigned char> length_bytes;
                 length_bytes.resize(2);
                 memcpy((char*)&length_bytes[0], client->FrameBuffer.substr(2, 2).c_str(), 2);
-
+                
                 size_t length = 0;
                 int num_bytes = 2;
                 for (int c = 0; c < num_bytes; c++)
@@ -285,7 +212,7 @@ bool webSocket::wsCheckSizeClientFrame(int clientID){
                 std::vector<unsigned char> length_bytes;
                 length_bytes.resize(8);
                 memcpy((char*)&length_bytes[0], client->FrameBuffer.substr(2, 8).c_str(), 8);
-
+                
                 size_t length = 0;
                 int num_bytes = 8;
                 for (int c = 0; c < num_bytes; c++)
@@ -293,7 +220,7 @@ bool webSocket::wsCheckSizeClientFrame(int clientID){
                 client->FramePayloadDataLength = length;
             }
         }
-
+        
         if (client->FramePayloadDataLength >= 0){
             if (client->FramePayloadDataLength > 100000){
                 client->FramePayloadDataLength = -1;
@@ -301,22 +228,22 @@ bool webSocket::wsCheckSizeClientFrame(int clientID){
                 return false;
             }
         }
-
+        
         return true;
     }
-
+    
     return false;
 }
 
 void webSocket::wsRemoveClient(int clientID){
     if (callOnClose != NULL)
         callOnClose(clientID);
-
+    
     wsClient *client = wsClients[clientID];
-
+    
     // fetch close status (which could be false), and call wsOnClose
     int closeStatus = wsClients[clientID]->CloseStatus;
-
+    
     // close socket
 #ifdef __linux__
     close(client->socket);
@@ -324,13 +251,13 @@ void webSocket::wsRemoveClient(int clientID){
     closesocket(client->socket);
 #endif
     FD_CLR(client->socket, &fds);
-
+    
     socketIDmap.erase(wsClients[clientID]->socket);
     wsClients[clientID] = NULL;
     delete client;
 }
 
-bool webSocket::wsProcessClientMessage(int clientID, unsigned char opcode, string data, int dataLength){
+bool webSocket::wsProcessClientMessage(int clientID, unsigned char opcode, std::string data, int dataLength){
     wsClient *client = wsClients[clientID];
     // check opcodes
     if (opcode == WS_OPCODE_PING){
@@ -354,7 +281,7 @@ bool webSocket::wsProcessClientMessage(int clientID, unsigned char opcode, strin
             // the server has not already sent a close frame to the client, send one now
             wsSendClientClose(clientID, WS_STATUS_NORMAL_CLOSE);
         }
-
+        
         wsRemoveClient(clientID);
     }
     else if (opcode == WS_OPCODE_TEXT || opcode == WS_OPCODE_BINARY){
@@ -365,7 +292,7 @@ bool webSocket::wsProcessClientMessage(int clientID, unsigned char opcode, strin
         // unknown opcode
         return false;
     }
-
+    
     return true;
 }
 
@@ -373,47 +300,47 @@ bool webSocket::wsProcessClientFrame(int clientID){
     wsClient *client = wsClients[clientID];
     // store the time that data was last received from the client
     client->LastRecvTime = time(NULL);
-
+    
     // check at least 6 bytes are set (first 2 bytes and 4 bytes for the mask key)
     if (client->FrameBuffer.size() < 6)
         return false;
-
+    
     // fetch first 2 bytes of header
     unsigned char octet0 = client->FrameBuffer.at(0);
     unsigned char octet1 = client->FrameBuffer.at(1);
-
+    
     unsigned char fin = octet0 & WS_FIN;
     unsigned char opcode = octet0 & 0x0f;
-
+    
     //unsigned char mask = octet1 & WS_MASK;
     if (octet1 < 128)
         return false; // close socket, as no mask bit was sent from the client
-
+    
     // fetch byte position where the mask key starts
     int seek = client->FrameBytesRead <= 131 ? 2 : (client->FrameBytesRead <= 65543 ? 4 : 10);
-
+    
     // read mask key
     char maskKey[4];
     memcpy(maskKey, client->FrameBuffer.substr(seek, 4).c_str(), 4);
-
+    
     seek += 4;
-
+    
     // decode payload data
-    string data;
+    std::string data;
     for (int i = seek; i < client->FrameBuffer.size(); i++){
         //data.append((char)(((int)client->FrameBuffer.at(i)) ^ maskKey[(i - seek) % 4]));
         char c = client->FrameBuffer.at(i);
         c = c ^ maskKey[(i - seek) % 4];
         data += c;
     }
-
+    
     // check if this is not a continuation frame and if there is already data in the message buffer
     if (opcode != WS_OPCODE_CONTINUATION && client->MessageBufferLength > 0){
         // clear the message buffer
         client->MessageBufferLength = 0;
         client->MessageBuffer.clear();
     }
-
+    
     // check if the frame is marked as the final frame in the message
     if (fin == WS_FIN){
         // check if this is the first frame in the message
@@ -424,20 +351,20 @@ bool webSocket::wsProcessClientFrame(int clientID){
         else {
             // increase message payload data length
             client->MessageBufferLength += client->FramePayloadDataLength;
-
+            
             // push frame payload data onto message buffer
             client->MessageBuffer.append(data);
-
+            
             // process the message
             bool result = wsProcessClientMessage(clientID, client->MessageOpcode, client->MessageBuffer, client->MessageBufferLength);
-
+            
             // check if the client wasn't removed, then reset message buffer and message opcode
             if (wsClients[clientID] != NULL){
                 client->MessageBuffer.clear();
                 client->MessageOpcode = 0;
                 client->MessageBufferLength = 0;
             }
-
+            
             return result;
         }
     }
@@ -445,19 +372,19 @@ bool webSocket::wsProcessClientFrame(int clientID){
         // check if the frame is a control frame, control frames cannot be fragmented
         if (opcode & 8)
             return false;
-
+        
         // increase message payload data length
         client->MessageBufferLength += client->FramePayloadDataLength;
-
+        
         // push frame payload data onto message buffer
         client->MessageBuffer.append(data);
-
+        
         // if this is the first frame in the message, store the opcode
         if (opcode != WS_OPCODE_CONTINUATION) {
             client->MessageOpcode = opcode;
         }
     }
-
+    
     return true;
 }
 
@@ -466,87 +393,87 @@ bool webSocket::wsBuildClientFrame(int clientID, const char *buffer, int bufferL
     // increase number of bytes read for the frame, and join buffer onto end of the frame buffer
     client->FrameBytesRead += bufferLength;
     client->FrameBuffer.append(buffer, bufferLength);
-
+    
     // check if the length of the frame's payload data has been fetched, if not then attempt to fetch it from the frame buffer
     if (client->FramePayloadDataLength != -1 || wsCheckSizeClientFrame(clientID) == true){
         // work out the header length of the frame
         int headerLength = (client->FramePayloadDataLength <= 125 ? 0 : (client->FramePayloadDataLength <= 65535 ? 2 : 8)) + 6;
-
+        
         // check if all bytes have been received for the frame
         int frameLength = client->FramePayloadDataLength + headerLength;
         if (client->FrameBytesRead >= frameLength){
             // check if too many bytes have been read for the frame (they are part of the next frame)
             int nextFrameBytesLength = client->FrameBytesRead - frameLength;
-            string nextFrameBytes;
+            std::string nextFrameBytes;
             if (nextFrameBytesLength > 0){
                 client->FrameBytesRead -= nextFrameBytesLength;
                 nextFrameBytes = client->FrameBuffer.substr(frameLength, nextFrameBytesLength);
                 client->FrameBuffer = client->FrameBuffer.substr(0, frameLength);
             }
-
+            
             // process the frame
             bool result = wsProcessClientFrame(clientID);
-
+            
             // check if the client wasn't removed, then reset frame data
             if (wsClients[clientID] != NULL){
                 client->FramePayloadDataLength = -1;
                 client->FrameBytesRead = 0;
                 client->FrameBuffer.clear();
             }
-
+            
             // if there's no extra bytes for the next frame, or processing the frame failed, return the result of processing the frame
             if (nextFrameBytesLength <= 0 || !result)
                 return result;
-
+            
             // build the next frame with the extra bytes
             return wsBuildClientFrame(clientID, nextFrameBytes.c_str(), nextFrameBytesLength);
         }
     }
-
+    
     return true;
 }
 
 bool webSocket::wsProcessClientHandshake(int clientID, char *buffer){
     // fetch headers and request line
-    string buf(buffer);
+    std::string buf(buffer);
     size_t sep = buf.find("\r\n\r\n");
-    if (sep == string::npos)
+    if (sep == std::string::npos)
         return false;
-
-    string headers = buf.substr(0, sep);
-
-    string request = headers.substr(0, headers.find("\r\n"));
+    
+    std::string headers = buf.substr(0, sep);
+    
+    std::string request = headers.substr(0, headers.find("\r\n"));
     if (request.size() == 0)
         return false;
-
-    string part;
+    
+    std::string part;
     part = request.substr(0, request.find(" "));
     if (part.compare("GET") != 0 && part.compare("get") != 0 && part.compare("Get") != 0)
         return false;
-
+    
     part = request.substr(request.rfind("/") + 1);
     if (atof(part.c_str()) < 1.1)
         return false;
-
-    string host;
-    string ws_key;
-    string ws_version;
+    
+    std::string host;
+    std::string ws_key;
+    std::string ws_version;
     headers = headers.substr(headers.find("\r\n") + 2);
     while (headers.size() > 0){
         request = headers.substr(0, headers.find("\r\n"));
-        if (request.find(":") != string::npos){
-            string key = request.substr(0, request.find(":"));
-            if (key.find_first_not_of(" ") != string::npos)
+        if (request.find(":") != std::string::npos){
+            std::string key = request.substr(0, request.find(":"));
+            if (key.find_first_not_of(" ") != std::string::npos)
                 key = key.substr(key.find_first_not_of(" "));
-            if (key.find_last_not_of(" ") != string::npos)
+            if (key.find_last_not_of(" ") != std::string::npos)
                 key = key.substr(0, key.find_last_not_of(" ") + 1);
-
-            string value = request.substr(request.find(":") + 1);
-            if (value.find_first_not_of(" ") != string::npos)
+            
+            std::string value = request.substr(request.find(":") + 1);
+            if (value.find_first_not_of(" ") != std::string::npos)
                 value = value.substr(value.find_first_not_of(" "));
-            if (value.find_last_not_of(" ") != string::npos)
+            if (value.find_last_not_of(" ") != std::string::npos)
                 value = value.substr(0, value.find_last_not_of(" ") + 1);
-
+            
             if (key.compare("Host") == 0){
                 host = value;
             }
@@ -557,51 +484,51 @@ bool webSocket::wsProcessClientHandshake(int clientID, char *buffer){
                 ws_version = value;
             }
         }
-        if (headers.find("\r\n") == string::npos)
+        if (headers.find("\r\n") == std::string::npos)
             break;
         headers = headers.substr(headers.find("\r\n") + 2);
     }
-
+    
     if (host.size() == 0)
         return false;
-
+    
     if (ws_key.size() == 0 || base64_decode(ws_key).size() != 16)
         return false;
-
+    
     if (ws_version.size() == 0 || atoi(ws_version.c_str()) < 7)
         return false;
-
+    
     unsigned char hash[20];
     ws_key.append("258EAFA5-E914-47DA-95CA-C5AB0DC85B11");
     SHA1((unsigned char *)ws_key.c_str(), ws_key.size(), hash);
-    string encoded_hash = base64_encode(hash, 20);
-
-    string message = "HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: ";
+    std::string encoded_hash = base64_encode(hash, 20);
+    
+    std::string message = "HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: ";
     message.append(encoded_hash);
     message.append("\r\n\r\n");
-
+    
     int socket = wsClients[clientID]->socket;
-
+    
     int left = message.size();
     do {
         int sent = send(socket, message.c_str(), message.size(), 0);
         if (sent == false) return false;
-
+        
         left -= sent;
         if (sent > 0)
             message = message.substr(sent);
     }
     while (left > 0);
-
+    
     return true;
 }
 
 bool webSocket::wsProcessClient(int clientID, char *buffer, int bufferLength){
     bool result;
-
+    
     if (clientID >= wsClients.size() || wsClients[clientID] == NULL)
         return false;
-
+    
     if (wsClients[clientID]->ReadyState == WS_READY_STATE_OPEN){
         // handshake completed
         result = wsBuildClientFrame(clientID, buffer, bufferLength);
@@ -612,7 +539,7 @@ bool webSocket::wsProcessClient(int clientID, char *buffer, int bufferLength){
         if (result){
             if (callOnOpen != NULL)
                 callOnOpen(clientID);
-
+            
             wsClients[clientID]->ReadyState = WS_READY_STATE_OPEN;
         }
     }
@@ -620,7 +547,7 @@ bool webSocket::wsProcessClient(int clientID, char *buffer, int bufferLength){
         // ready state is set to closed
         result = false;
     }
-
+    
     return result;
 }
 
@@ -637,7 +564,7 @@ void webSocket::wsAddClient(int socket, in_addr ip){
     FD_SET(socket, &fds);
     if (socket > fdmax)
         fdmax = socket;
-
+    
     int clientID = wsGetNextClientID();
     wsClient *newClient = new wsClient(socket, ip);
     if (clientID >= wsClients.size()){
@@ -666,24 +593,18 @@ void webSocket::setPeriodicHandler(nullCallback callback){
 }
 
 void webSocket::startServer(int port){
-    showAvailableIP();
-
+    
     int yes = 1;
     char buf[4096];
     struct sockaddr_in serv_addr, cli_addr;
-
+    
     memset(&serv_addr, '0', sizeof(serv_addr));
     memset(&cli_addr, '0', sizeof(cli_addr));
     serv_addr.sin_family = AF_INET;
     //serv_addr.sin_addr.s_addr = inet_addr(ip);
     serv_addr.sin_addr.s_addr = INADDR_ANY;
     serv_addr.sin_port = htons(port);
-
-#if _WIN32
-    WSADATA wsaData;
-    WSAStartup(MAKEWORD(2, 2), &wsaData);
-#endif
-
+    
     listenfd = socket(AF_INET, SOCK_STREAM, 0);
     if (setsockopt(listenfd, SOL_SOCKET, SO_REUSEADDR, (const char *)&yes, sizeof(int)) == -1){
         perror("setsockopt() error!");
@@ -697,13 +618,13 @@ void webSocket::startServer(int port){
         perror("listen() error!");
         exit(1);
     }
-
+    
     fdmax = listenfd;
     fd_set read_fds;
     FD_ZERO(&fds);
     FD_SET(listenfd, &fds);
     FD_ZERO(&read_fds);
-
+    
     struct timeval timeout;
     time_t nextPingTime = time(NULL) + 1;
     while (FD_ISSET(listenfd, &fds)){
@@ -738,37 +659,13 @@ void webSocket::startServer(int port){
                 }
             }
         }
-
+        
         if (time(NULL) >= nextPingTime){
             wsCheckIdleClients();
             nextPingTime = time(NULL) + 1;
         }
-
+        
         if (callPeriodic != NULL)
             callPeriodic();
     }
-}
-
-void webSocket::stopServer(){
-    for (int i = 0; i < wsClients.size(); i++){
-        if (wsClients[i] != NULL){
-            if (wsClients[i]->ReadyState != WS_READY_STATE_CONNECTING)
-                wsSendClientClose(i, WS_STATUS_GONE_AWAY);
-#ifdef __linux__
-                close(wsClients[i]->socket);
-#elif _WIN32
-                closesocket(wsClients[i]->socket);
-#endif
-        }
-    }
-#ifdef __linux__
-    close(listenfd);
-#elif _WIN32
-    closesocket(listenfd);
-#endif
-
-    wsClients.clear();
-    socketIDmap.clear();
-    FD_ZERO(&fds);
-    fdmax = 0;
 }

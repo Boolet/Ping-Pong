@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E1888F28202C14F4002E3A2D"
-               BuildableName = "Ping Pong"
-               BlueprintName = "Ping Pong"
-               ReferencedContainer = "container:Ping Pong.xcodeproj">
+               BlueprintIdentifier = "E1A7605F2035782300DB106B"
+               BuildableName = "Learning Sockets"
+               BlueprintName = "Learning Sockets"
+               ReferencedContainer = "container:Learning Sockets.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E1888F28202C14F4002E3A2D"
-            BuildableName = "Ping Pong"
-            BlueprintName = "Ping Pong"
-            ReferencedContainer = "container:Ping Pong.xcodeproj">
+            BlueprintIdentifier = "E1A7605F2035782300DB106B"
+            BuildableName = "Learning Sockets"
+            BlueprintName = "Learning Sockets"
+            ReferencedContainer = "container:Learning Sockets.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E1888F28202C14F4002E3A2D"
-            BuildableName = "Ping Pong"
-            BlueprintName = "Ping Pong"
-            ReferencedContainer = "container:Ping Pong.xcodeproj">
+            BlueprintIdentifier = "E1A7605F2035782300DB106B"
+            BuildableName = "Learning Sockets"
+            BlueprintName = "Learning Sockets"
+            ReferencedContainer = "container:Learning Sockets.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E1888F28202C14F4002E3A2D"
-            BuildableName = "Ping Pong"
-            BlueprintName = "Ping Pong"
-            ReferencedContainer = "container:Ping Pong.xcodeproj">
+            BlueprintIdentifier = "E1A7605F2035782300DB106B"
+            BuildableName = "Learning Sockets"
+            BlueprintName = "Learning Sockets"
+            ReferencedContainer = "container:Learning Sockets.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
