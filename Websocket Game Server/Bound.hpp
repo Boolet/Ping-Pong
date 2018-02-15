@@ -29,13 +29,20 @@ public:
         top, bottom, right, left, none
     };
     
-    
+    //getters
     std::string getName(){return name;}
     double getX(){return xPos;}
     double getY(){return yPos;}
     double getWidth(){return width;}
     double getHeight(){return height;}
     
+    //setters
+    void setX(float newX){xPos = newX;}
+    void setY(float newY){yPos = newY;}
+    void setWidth(float newWidth){width = newWidth;}
+    void setHeight(float newHeight){height = newHeight;}
+    
+    //game engine stuff
     bool isIntersecting(Bounds* other);
     side intersectionSide(Bounds* other);
     virtual void onCollision(Bounds* other, side onSide);

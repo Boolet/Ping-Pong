@@ -67,8 +67,9 @@ void recieveMessage(int clientID, std::string message){
     }
 }
 
-void updateGameData(MessageHandler::userInput inputData){
-    
+void updateGameData(std::string dataJSON){
+    MessageHandler::userInput input =  MessageHandler::userInputFromJSON(dataJSON);
+    engine->UserInput(input.deltaX);
 }
 
 
@@ -100,25 +101,24 @@ void closeHandler(int clientID){
 
 /* called when a client sends a message to the server */
 void messageHandler(int clientID, std::string message){
-    std::ostringstream os;
-    os << "Stranger " << clientID << " says: " << message;
-    
-    std::vector<int> clientIDs = server.getClientIDs();
-    for (int i = 0; i < clientIDs.size(); i++){
-        if (clientIDs[i] != clientID)
-            server.wsSend(clientIDs[i], os.str());
-    }
+    std::cout << "Input from " << clientID << "containing: " << message << std::endl;
+    updateGameData(message);
 }
 
 /* called once per select() loop */
 void periodicHandler(){
-    static time_t next = time(NULL) + 10;
+    static time_t next = time(NULL) + 1;
     time_t current = time(NULL);
-    engine->ManualTick();
-    if (current >= next){   //send a message every 10 seconds
+    
+    std::vector<int> clientIDs = server.getClientIDs();
+    if(clientIDs.size() > 0)
+        engine->ManualTick();
+    
+    if (current >= next){   //send a message every 1 seconds
+        std::cout << "Number of clients: " << clientIDs.size() << std::endl;
         sendGameData();
         
-        next = time(NULL) + 10;
+        next = time(NULL) + 1;
     }
 }
 

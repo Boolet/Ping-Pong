@@ -9,6 +9,7 @@
 
 class MessageHandler{
 public:
+    //this will need to be moved to its own file
     struct userInput{
         float deltaX;
     };

@@ -89,3 +89,7 @@ void GameEngine::Cleanup(){
         ballColliders[i]->onEndFrame();
     }
 }
+
+void GameEngine::UserInput(float deltaX){
+    playerOne.setX(playerOne.getX() + deltaX);
+}
