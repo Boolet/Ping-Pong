@@ -21,6 +21,7 @@
 #define PORT 8888
 #define PLAY_WIDTH 500
 #define PLAY_HEIGHT 500
+#define MAX_PLAYERS 1
 
 webSocket server;
 GameEngine* engine;
@@ -78,15 +79,11 @@ void updateGameData(std::string dataJSON){
 
 /* called when a client connects */
 void openHandler(int clientID){
-    std::ostringstream os;
-    os << "Stranger " << clientID << " has joined.";
-    
     std::vector<int> clientIDs = server.getClientIDs();
-    for (int i = 0; i < clientIDs.size(); i++){
-        if (clientIDs[i] != clientID)
-            server.wsSend(clientIDs[i], os.str());
+    
+    if(clientIDs.size() > MAX_PLAYERS){
+        server.wsClose(clientID);
     }
-    server.wsSend(clientID, "Welcome!");
 }
 
 /* called when a client disconnects */
