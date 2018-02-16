@@ -14,7 +14,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="fancywebsocket.js"></script>
 	<script>
-		var Server;
+        var Server;
+        let msg;
 
 		function log( text ) {
 			$log = $('#log');
@@ -56,8 +57,10 @@
 			//Log any messages sent from server
 			Server.bind('message', function( payload ) {
 			    log(payload);
-			    let msg = JSON.parse(payload);
+			    msg = JSON.parse(payload);
 			    log(msg.objects[0].x);
+			    Boundary = new component(msg.objects[0].width, msg.objects[0].height, "black", msg.objects[0].x, msg.objects[0].y);
+			    Ball = new component(msg.objects[5].width, msg.objects[5].height, "red", msg.objects[5].x, msg.objects[5].y);
 			});
 
 			Server.connect();
@@ -81,14 +84,16 @@
         function startGame()
         {
             Player1Paddle = new component(10, 90, "blue", 10, 120);
+            Boundary = new component(msg.objects[0].width, msg.objects[0].height, "black", msg.objects[0].x, msg.objects[0].y);
+            Ball = new component(msg.objects[5].width, msg.objects[5].height, "red", msg.objects[5].x, msg.objects[5].y);
             myGameArea.start();
         }
 
         var myGameArea = {
             canvas: document.createElement("canvas"),
             start: function () {
-                this.canvas.width = 480;
-                this.canvas.height = 270;;
+                this.canvas.width = 500;
+                this.canvas.height = 500;;
                 this.context = this.canvas.getContext("2d");
                 document.body.insertBefore(this.canvas, document.body.childNodes[0]);
                 this.interval = setInterval(updateGameArea, 20);
@@ -133,8 +138,8 @@
             myGameArea.clear();
             Player1Paddle.speedX = 0;
             Player1Paddle.speedY = 0;
-            if (myGameArea.keys && myGameArea.keys[38]) { Player1Paddle.speedY = -2; }
-            if (myGameArea.keys && myGameArea.keys[40]) { Player1Paddle.speedY = 2; }
+            if (myGameArea.keys && myGameArea.keys[38]) { Player1Paddle.speedY = 0; }
+            if (myGameArea.keys && myGameArea.keys[40]) { Player1Paddle.speedY = 0; }
             Player1Paddle.newPos();
             Player1Paddle.update();
 
