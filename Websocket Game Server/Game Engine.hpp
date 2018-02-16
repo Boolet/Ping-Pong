@@ -9,6 +9,7 @@
 #endif
 
 #include <stdio.h>
+#include "Bound.hpp"
 #include "Paddle.hpp"
 #include "Ball.hpp"
 #include "Score.hpp"

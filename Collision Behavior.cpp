@@ -6,8 +6,10 @@
 //  Copyright © 2018 Avi Miller. All rights reserved.
 //
 
-#include "Collision Behavior.hpp"
+#include "Bound.hpp"
 
-void ResetScore::OnCollision(Bounds* other){
-    targetScore->score = 0;
+void Bounds::ResetScore::OnCollision(Bounds* other){
+    if(other->getName() == "ball"){
+        targetScore->score = 0;
+    }
 }

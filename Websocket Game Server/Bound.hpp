@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <vector>
 #include <iostream>
-#include "Collision Behavior.hpp"
+#include "Score.hpp"
 
 #define DEFAULT_NAME "Default"
 
@@ -28,6 +28,20 @@ public:
     
     enum side{
         top, bottom, right, left, none
+    };
+    
+    class CollisionBehavior{
+    public:
+        virtual void OnCollision(Bounds* other){}
+    };
+    
+    class ResetScore : public CollisionBehavior{
+    public:
+        ResetScore(Score* target):targetScore(target){};
+        
+        void OnCollision(Bounds* other) override;
+        
+        Score* targetScore;
     };
     
     //getters
