@@ -10,7 +10,8 @@ public:
     Paddle(float x, float y, float w, float h):Bounds(x,y,w,h){paddleScore = new Score();}
     void onCollision(Bounds* other, side onSide) override;
     
-    int getScore(){return paddleScore->score;}
+    int getScoreValue(){return paddleScore->score;}
+    Score* getScoreRef(){return paddleScore;}
 private:
     Score* paddleScore;
 };

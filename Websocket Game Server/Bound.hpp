@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <vector>
 #include <iostream>
+#include "Collision Behavior.hpp"
 
 #define DEFAULT_NAME "Default"
 
@@ -43,6 +44,9 @@ public:
     void setWidth(float newWidth){width = newWidth;}
     void setHeight(float newHeight){height = newHeight;}
     
+    //mutators
+    void addCollisionBehavior(CollisionBehavior* behave);
+    
     //game engine stuff
     bool isIntersecting(Bounds* other);
     side intersectionSide(Bounds* other);
@@ -58,6 +62,7 @@ protected:
     
     Bounds intersectionArea(Bounds* other);
     
+    std::vector<CollisionBehavior*> onCollisionBehaviors;
     
     
 };

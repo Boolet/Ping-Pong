@@ -17,6 +17,7 @@
 		E1A43F5A20364ABF0062823C /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F4F20364ABF0062823C /* sha1.cpp */; };
 		E1A43F5B20364ABF0062823C /* websocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F5120364ABF0062823C /* websocket.cpp */; };
 		E1A43F5E203658AB0062823C /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F5C203658AB0062823C /* Score.cpp */; };
+		E1A43F6120367F0D0062823C /* Collision Behavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F5F20367F0D0062823C /* Collision Behavior.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -87,6 +88,8 @@
 		E1A43F5220364ABF0062823C /* websocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = websocket.hpp; path = "Websocket Game Server/websocket.hpp"; sourceTree = SOURCE_ROOT; };
 		E1A43F5C203658AB0062823C /* Score.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Score.cpp; sourceTree = SOURCE_ROOT; };
 		E1A43F5D203658AB0062823C /* Score.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Score.hpp; sourceTree = SOURCE_ROOT; };
+		E1A43F5F20367F0D0062823C /* Collision Behavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Collision Behavior.cpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F6020367F0D0062823C /* Collision Behavior.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "Collision Behavior.hpp"; sourceTree = SOURCE_ROOT; };
 		E1A760602035782300DB106B /* Learning Sockets */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Learning Sockets"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -208,6 +211,8 @@
 				E1A43F5220364ABF0062823C /* websocket.hpp */,
 				E1A43F5C203658AB0062823C /* Score.cpp */,
 				E1A43F5D203658AB0062823C /* Score.hpp */,
+				E1A43F5F20367F0D0062823C /* Collision Behavior.cpp */,
+				E1A43F6020367F0D0062823C /* Collision Behavior.hpp */,
 			);
 			name = "WebSocket Game Server";
 			path = "Learning Sockets";
@@ -271,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1A43F5520364ABF0062823C /* Bound.cpp in Sources */,
+				E1A43F6120367F0D0062823C /* Collision Behavior.cpp in Sources */,
 				E1A43F5B20364ABF0062823C /* websocket.cpp in Sources */,
 				E1A43F5420364ABF0062823C /* base64.cpp in Sources */,
 				E1A43F5820364ABF0062823C /* main.cpp in Sources */,

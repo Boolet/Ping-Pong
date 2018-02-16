@@ -45,9 +45,16 @@ Bounds::side Bounds::intersectionSide(Bounds* other){
 void Bounds::onCollision(Bounds* other, side onSide){
     //std::cout << "Collided!" << std::endl;
     intersectors.push_back(other);
+    for(auto a : onCollisionBehaviors){
+        a->OnCollision(other);
+    }
 }
 
 void Bounds::onEndFrame(){
     intersectLastFrame = intersectors;
     intersectors.clear();
+}
+
+void Bounds::addCollisionBehavior(CollisionBehavior* behave){
+    onCollisionBehaviors.push_back(behave);
 }

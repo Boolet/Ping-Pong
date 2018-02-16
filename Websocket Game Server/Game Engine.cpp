@@ -10,6 +10,8 @@ bottomWall(0, height, width, 5),
 playerOne(10, height/2, 5, height/6),
 ball(width/2, height/2)
 {
+    leftWall.addCollisionBehavior(new ResetScore(playerOne.getScoreRef()));
+    
     ballColliders.push_back(&leftWall);
     ballColliders.push_back(&topWall);
     ballColliders.push_back(&rightWall);
