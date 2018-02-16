@@ -13,6 +13,7 @@
 #include <iostream>
 #include <map>
 #include <sstream>
+#include <chrono>
 #include "websocket.hpp"
 #include "Game Engine.hpp"
 #include "Communication Protocol.hpp"
@@ -108,8 +109,10 @@ void messageHandler(int clientID, std::string message){
 
 /* called once per select() loop */
 void periodicHandler(){
-    static time_t next = time(NULL) + 1;
-    time_t current = time(NULL);
+    static double next = std::chrono::duration_cast< std::chrono::milliseconds >(
+                        std::chrono::system_clock::now().time_since_epoch()).count() + 500;
+    double current = std::chrono::duration_cast< std::chrono::milliseconds >(
+                        std::chrono::system_clock::now().time_since_epoch()).count();
     
     std::vector<int> clientIDs = server.getClientIDs();
     if(clientIDs.size() > 0)
@@ -121,7 +124,8 @@ void periodicHandler(){
         std::cout << "Number of clients: " << clientIDs.size() << std::endl;
         sendGameData();
         
-        next = time(NULL) + 1;
+        next = std::chrono::duration_cast< std::chrono::milliseconds >(
+            std::chrono::system_clock::now().time_since_epoch()).count() + 500;
     }
 }
 

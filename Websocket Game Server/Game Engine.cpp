@@ -3,11 +3,11 @@
 GameEngine::GameEngine(float width, float height):
 gameWidth(width),
 gameHeight(height),
-leftWall(0, 0, 1, height),
-topWall(0,0,width,1),
-rightWall(width, 0, 1, height),
-bottomWall(0, height, width, 1),
-playerOne(width-1, height-1, 3, 1),
+leftWall(0, 0, 5, height),
+topWall(0,0,width,5),
+rightWall(width, 0, 5, height),
+bottomWall(0, height, width, 5),
+playerOne(10, height/2, 5, height/6),
 ball(width/2, height/2)
 {
     ballColliders.push_back(&leftWall);
@@ -30,7 +30,8 @@ void GameEngine::Run(){
         if(deltaTime > 0)   //if there was an update last frame, then update the time of last frame
             timeLastFrame = localTime;
         
-        Sleep(1);
+        //Sleep(1);
+        usleep(100);
         localTime = std::chrono::duration_cast< std::chrono::milliseconds >(
                     std::chrono::system_clock::now().time_since_epoch()).count();
         deltaTime = localTime - timeLastFrame;

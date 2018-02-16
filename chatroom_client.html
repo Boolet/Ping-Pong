@@ -16,6 +16,7 @@
 	<script>
         var Server;
         let msg;
+        let objArray = [];
 
 		function log( text ) {
 			$log = $('#log');
@@ -59,11 +60,21 @@
 			    log(payload);
 			    msg = JSON.parse(payload);
 			    log(msg.objects[0].x);
-			    Boundary = new component(msg.objects[0].width, msg.objects[0].height, "black", msg.objects[0].x, msg.objects[0].y);
-			    Ball = new component(msg.objects[5].width, msg.objects[5].height, "red", msg.objects[5].x, msg.objects[5].y);
+			    log(msg.scores[0].score)
+			    redraw(msg);
+			    //Boundary = new component(msg.objects[0].width, msg.objects[0].height, "black", msg.objects[0].x, msg.objects[0].y);
+			    //Ball = new component(msg.objects[5].width, msg.objects[5].height, "red", msg.objects[5].x, msg.objects[5].y);
 			});
 
 			Server.connect();
+        }
+        
+        function redraw(msg){
+        	myGameArea.clear();
+        	for(var i = 0; i < msg.objects.length; ++i){
+        		//log(i);
+        		(new component(msg.objects[i].width, msg.objects[i].height, "black", msg.objects[i].x, msg.objects[i].y)).update();
+        	}
         }
 
         function disconnect()
@@ -83,17 +94,17 @@
 
         function startGame()
         {
-            Player1Paddle = new component(10, 90, "blue", 10, 120);
-            Boundary = new component(msg.objects[0].width, msg.objects[0].height, "black", msg.objects[0].x, msg.objects[0].y);
-            Ball = new component(msg.objects[5].width, msg.objects[5].height, "red", msg.objects[5].x, msg.objects[5].y);
+            //Player1Paddle = new component(500, 500, "blue", 0, 0);
+            //Boundary = new component(msg.objects[0].width, msg.objects[0].height, "black", msg.objects[0].x, msg.objects[0].y);
+            //Ball = new component(msg.objects[5].width, msg.objects[5].height, "red", msg.objects[5].x, msg.objects[5].y);
             myGameArea.start();
         }
 
         var myGameArea = {
             canvas: document.createElement("canvas"),
             start: function () {
-                this.canvas.width = 500;
-                this.canvas.height = 500;;
+                this.canvas.width = 550;
+                this.canvas.height = 550;
                 this.context = this.canvas.getContext("2d");
                 document.body.insertBefore(this.canvas, document.body.childNodes[0]);
                 this.interval = setInterval(updateGameArea, 20);
@@ -135,13 +146,13 @@
         
         function updateGameArea()
         {
-            myGameArea.clear();
-            Player1Paddle.speedX = 0;
-            Player1Paddle.speedY = 0;
-            if (myGameArea.keys && myGameArea.keys[38]) { Player1Paddle.speedY = 0; }
-            if (myGameArea.keys && myGameArea.keys[40]) { Player1Paddle.speedY = 0; }
-            Player1Paddle.newPos();
-            Player1Paddle.update();
+            //myGameArea.clear();
+            //Player1Paddle.speedX = 0;
+            //Player1Paddle.speedY = 0;
+            //if (myGameArea.keys && myGameArea.keys[38]) { Player1Paddle.speedY = 0; }
+            //if (myGameArea.keys && myGameArea.keys[40]) { Player1Paddle.speedY = 0; }
+            //Player1Paddle.newPos();
+            //Player1Paddle.update();
 
         }
 
