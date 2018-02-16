@@ -55,7 +55,9 @@
 
 			//Log any messages sent from server
 			Server.bind('message', function( payload ) {
-				log( payload );
+			    log(payload);
+			    let msg = JSON.parse(payload);
+			    log(msg.objects[0].x);
 			});
 
 			Server.connect();
