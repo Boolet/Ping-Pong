@@ -71,7 +71,7 @@ void recieveMessage(int clientID, std::string message){
 
 void updateGameData(std::string dataJSON){
     MessageHandler::userInput input =  MessageHandler::userInputFromJSON(dataJSON);
-    engine->UserInput(input.deltaX);
+    engine->UserInput(input.deltaY);
 }
 
 

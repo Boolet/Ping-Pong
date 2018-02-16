@@ -12,7 +12,7 @@ class MessageHandler{
 public:
     //this will need to be moved to its own file
     struct userInput{
-        float deltaX;
+        float deltaY;
     };
     
     static std::string JSONFromBoundsWithScores(std::vector<Bounds*> objects, std::vector<Score*> scores);

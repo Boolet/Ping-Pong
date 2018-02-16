@@ -17,6 +17,8 @@
         var Server;
         let msg;
         let objArray = [];
+        // "deltaY":10
+        // "\"deltaY\":10"
 
 		function log( text ) {
 			$log = $('#log');
@@ -149,8 +151,12 @@
             //myGameArea.clear();
             //Player1Paddle.speedX = 0;
             //Player1Paddle.speedY = 0;
-            //if (myGameArea.keys && myGameArea.keys[38]) { Player1Paddle.speedY = 0; }
-            //if (myGameArea.keys && myGameArea.keys[40]) { Player1Paddle.speedY = 0; }
+            if (myGameArea.keys && myGameArea.keys[38]) {
+            	this.send("{\"deltaY\":-10.0}");
+             }
+            if (myGameArea.keys && myGameArea.keys[40]) { 
+            	this.send("{\"deltaY\":10.0}"); 
+            }
             //Player1Paddle.newPos();
             //Player1Paddle.update();
 

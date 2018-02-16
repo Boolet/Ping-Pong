@@ -75,11 +75,11 @@ MessageHandler::userInput MessageHandler::userInputFromJSON(std::string JSONInpu
     document.Parse(JSONInput.c_str());
     
     assert(document.IsObject());
-    assert(document.HasMember("deltaX"));
-    assert(document["deltaX"].IsFloat());
+    assert(document.HasMember("deltaY"));
+    assert(document["deltaY"].IsFloat());
     
     userInput data;
-    data.deltaX = document["deltaX"].GetFloat();
+    data.deltaY = document["deltaY"].GetFloat();
     
     return data;
     
