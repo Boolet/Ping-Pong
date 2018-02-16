@@ -101,6 +101,6 @@ void GameEngine::Cleanup(){
     }
 }
 
-void GameEngine::UserInput(float deltaX){
-    playerOne.setX(playerOne.getX() + deltaX);
+void GameEngine::UserInput(float deltaY){
+    playerOne.setY(playerOne.getY() + deltaY);
 }

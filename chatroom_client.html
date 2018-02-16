@@ -59,10 +59,10 @@
 
 			//Log any messages sent from server
 			Server.bind('message', function( payload ) {
-			    log(payload);
+			    //log(payload);
 			    msg = JSON.parse(payload);
-			    log(msg.objects[0].x);
-			    log(msg.scores[0].score)
+			    //log(msg.objects[0].x);
+			    //log(msg.scores[0].score)
 			    redraw(msg);
 			    //Boundary = new component(msg.objects[0].width, msg.objects[0].height, "black", msg.objects[0].x, msg.objects[0].y);
 			    //Ball = new component(msg.objects[5].width, msg.objects[5].height, "red", msg.objects[5].x, msg.objects[5].y);
@@ -100,6 +100,7 @@
             //Boundary = new component(msg.objects[0].width, msg.objects[0].height, "black", msg.objects[0].x, msg.objects[0].y);
             //Ball = new component(msg.objects[5].width, msg.objects[5].height, "red", msg.objects[5].x, msg.objects[5].y);
             myGameArea.start();
+            updateGameArea();
         }
 
         var myGameArea = {
@@ -109,7 +110,7 @@
                 this.canvas.height = 550;
                 this.context = this.canvas.getContext("2d");
                 document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-                this.interval = setInterval(updateGameArea, 20);
+                this.interval = setInterval(updateGameArea, 200);
                 window.addEventListener('keydown', function (e) {
                     myGameArea.keys = (myGameArea.keys || []);
                     myGameArea.keys[e.keyCode] = true;
@@ -145,7 +146,7 @@
             }
         }
 
-        
+        /*
         function updateGameArea()
         {
             //myGameArea.clear();
@@ -165,6 +166,24 @@
             //Player1Paddle.newPos();
             //Player1Paddle.update();
 
+        }
+        */
+        
+        var count = 0;
+        function updateGameArea()
+        {
+           if (myGameArea.keys && myGameArea.keys[38]) {
+                this.send("{\"deltaY\":-10.0}");
+                //count--;
+           }
+           if (myGameArea.keys && myGameArea.keys[40]) {
+                this.send("{\"deltaY\":10.0}");
+                //count++;
+           }
+           //var t = setTimeout(startTime, 200);
+			//document.getElementById('txt').innerHTML =
+    			//"Pressed: " + count;
+    		//log(count);
         }
 
 

@@ -26,7 +26,7 @@ public:
     void ManualTick();
     void Suspend();
     
-    void UserInput(float deltaX);    //JUST using one value for now; this is a crummy way to implement this
+    void UserInput(float deltaY);    //JUST using one value for now; this is a crummy way to implement this
     
     std::vector<Bounds*> getColliderData(){return ballColliders;}
     
