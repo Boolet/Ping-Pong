@@ -16,6 +16,7 @@
 		E1A43F5920364ABF0062823C /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F2520364ABF0062823C /* Paddle.cpp */; };
 		E1A43F5A20364ABF0062823C /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F4F20364ABF0062823C /* sha1.cpp */; };
 		E1A43F5B20364ABF0062823C /* websocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F5120364ABF0062823C /* websocket.cpp */; };
+		E1A43F5E203658AB0062823C /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A43F5C203658AB0062823C /* Score.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -84,6 +85,8 @@
 		E1A43F5020364ABF0062823C /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = "Websocket Game Server/sha1.h"; sourceTree = SOURCE_ROOT; };
 		E1A43F5120364ABF0062823C /* websocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = websocket.cpp; path = "Websocket Game Server/websocket.cpp"; sourceTree = SOURCE_ROOT; };
 		E1A43F5220364ABF0062823C /* websocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = websocket.hpp; path = "Websocket Game Server/websocket.hpp"; sourceTree = SOURCE_ROOT; };
+		E1A43F5C203658AB0062823C /* Score.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Score.cpp; sourceTree = SOURCE_ROOT; };
+		E1A43F5D203658AB0062823C /* Score.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Score.hpp; sourceTree = SOURCE_ROOT; };
 		E1A760602035782300DB106B /* Learning Sockets */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Learning Sockets"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -203,6 +206,8 @@
 				E1A43F5020364ABF0062823C /* sha1.h */,
 				E1A43F5120364ABF0062823C /* websocket.cpp */,
 				E1A43F5220364ABF0062823C /* websocket.hpp */,
+				E1A43F5C203658AB0062823C /* Score.cpp */,
+				E1A43F5D203658AB0062823C /* Score.hpp */,
 			);
 			name = "WebSocket Game Server";
 			path = "Learning Sockets";
@@ -273,6 +278,7 @@
 				E1A43F5620364ABF0062823C /* Communication Protocol.cpp in Sources */,
 				E1A43F5720364ABF0062823C /* Game Engine.cpp in Sources */,
 				E1A43F5A20364ABF0062823C /* sha1.cpp in Sources */,
+				E1A43F5E203658AB0062823C /* Score.cpp in Sources */,
 				E1A43F5920364ABF0062823C /* Paddle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

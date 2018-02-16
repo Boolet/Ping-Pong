@@ -6,6 +6,7 @@
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
 #include "Bound.hpp"
+#include "Score.hpp"
 
 class MessageHandler{
 public:
@@ -14,6 +15,7 @@ public:
         float deltaX;
     };
     
+    static std::string JSONFromBoundsWithScores(std::vector<Bounds*> objects, std::vector<Score*> scores);
     static std::string JSONFromBounds(std::vector<Bounds*> objects);
     static userInput userInputFromJSON(std::string JSONInput);
 };

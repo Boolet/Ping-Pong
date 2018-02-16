@@ -33,7 +33,8 @@ void stepGameEngine(double deltaTime){
 }
 
 std::string gameDataJSON(){
-    return MessageHandler::JSONFromBounds(engine->getColliderData());
+    return MessageHandler::JSONFromBoundsWithScores(engine->getColliderData(), Score::getScores());
+    //return MessageHandler::JSONFromBounds(engine->getColliderData());
 }
 
 void sendGameData(){

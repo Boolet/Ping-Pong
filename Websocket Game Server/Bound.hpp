@@ -37,6 +37,7 @@ public:
     double getHeight(){return height;}
     
     //setters
+    void setName(std::string newName){name = newName;}
     void setX(float newX){xPos = newX;}
     void setY(float newY){yPos = newY;}
     void setWidth(float newWidth){width = newWidth;}
