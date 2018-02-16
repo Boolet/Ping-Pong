@@ -114,6 +114,8 @@ void periodicHandler(){
     std::vector<int> clientIDs = server.getClientIDs();
     if(clientIDs.size() > 0)
         engine->ManualTick();
+    else
+        engine->Suspend();
     
     if (current >= next){   //send a message every 1 seconds
         std::cout << "Number of clients: " << clientIDs.size() << std::endl;

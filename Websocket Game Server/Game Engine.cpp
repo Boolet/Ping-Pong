@@ -53,6 +53,14 @@ void GameEngine::ManualTick(){
                     std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
+void GameEngine::Suspend(){
+    localTime = std::chrono::duration_cast< std::chrono::milliseconds >(
+                std::chrono::system_clock::now().time_since_epoch()).count();
+    
+    timeLastFrame = std::chrono::duration_cast< std::chrono::milliseconds >(
+                std::chrono::system_clock::now().time_since_epoch()).count();
+}
+
 void GameEngine::ManualTick(double manualDeltaTime){
     GameTick(deltaTime * MILLISECONDS_TO_SECONDS);
 }

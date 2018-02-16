@@ -23,6 +23,7 @@ public:
     void Run();
     void ManualTick(double manualDeltaTime);
     void ManualTick();
+    void Suspend();
     
     void UserInput(float deltaX);    //JUST using one value for now; this is a crummy way to implement this
     
