@@ -8,7 +8,7 @@
         #ip {line-height:20px}
         #port {line-height:20px}
 		#body {max-width:800px;margin:auto}
-		#log {width:100%;height:400px}
+		#log {width:0%;height:0px}
 		#message {width:0%;line-height:0px}
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -62,7 +62,7 @@
 			    //log(payload);
 			    msg = JSON.parse(payload);
 			    //log(msg.objects[0].x);
-			    //log(msg.scores[0].score)
+			    //log("Score: " + msg.scores[0].score);
 			    redraw(msg);
 			    //Boundary = new component(msg.objects[0].width, msg.objects[0].height, "black", msg.objects[0].x, msg.objects[0].y);
 			    //Ball = new component(msg.objects[5].width, msg.objects[5].height, "red", msg.objects[5].x, msg.objects[5].y);
@@ -75,8 +75,11 @@
         	myGameArea.clear();
         	for(var i = 0; i < msg.objects.length; ++i){
         		//log(i);
-        		(new component(msg.objects[i].width, msg.objects[i].height, "black", msg.objects[i].x, msg.objects[i].y)).update();
+        		(new component(msg.objects[i].width, msg.objects[i].height, "black", msg.objects[i].x, msg.objects[i].y, "object")).update();
         	}
+        	var myScore = new component("30px", "Consolas", "black", 250, 40, "text");
+        	myScore.text="SCORE: " + msg.scores[0].score;
+        	myScore.update();
         }
 
         function disconnect()
@@ -125,8 +128,9 @@
             }
         }
 
-        function component(width, height, color, x, y)
+        function component(width, height, color, x, y, type)
         {
+        	this.type = type;
             this.width = width;
             this.height = height;
             this.speedX = 0;
@@ -136,8 +140,17 @@
             this.update = function ()
             {
                 ctx = myGameArea.context;
+                if(this.type == "text")
+                {
+                	ctx.font = this.width + " " + this.height;
+                	ctx.fillStyle = color;
+                	ctx.fillText(this.text, this.x, this.y);
+                }
+                else
+                {
                 ctx.fillStyle = color;
                 ctx.fillRect(this.x, this.y, this.width, this.height);
+                }
             }
             this.newPos = function()
             {
