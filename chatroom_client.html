@@ -8,7 +8,7 @@
         #ip {line-height:20px}
         #port {line-height:20px}
 		#body {max-width:800px;margin:auto}
-		#log {width:0%;height:0px}
+		#log {width:100%;height:30px}
 		#message {width:0%;line-height:0px}
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -16,16 +16,18 @@
 	<script>
         var Server;
         let msg;
-        let objArray = [];
+        var objArray = [];
+        var scoreArray = [];
         // "deltaY":10
         // "\"deltaY\":10"
 
 		function log( text ) {
 			$log = $('#log');
 			//Add text to log
-			$log.append(($log.val()?"\n":'')+text);
+			//$log.append(($log.val()?"\n":'')+text);
 			//Autoscroll
-			$log[0].scrollTop = $log[0].scrollHeight - $log[0].clientHeight;
+		    //$log[0].scrollTop = $log[0].scrollHeight - $log[0].clientHeight;
+			$log.text(text);
 		}
 
 		function send( text ) {
@@ -47,8 +49,10 @@
 
 			//Let the user know we're connected
 			Server.bind('open', function() {
-                document.getElementById("cntBtn").disabled = true;
-				log( "Connected." );
+			    document.getElementById("cntBtn").disabled = true;
+			    log(document.getElementById("PlayerID").value);
+			    send("HELO" + document.getElementById("PlayerID").value);
+				//log( "Connected." );
 			});
 
 			//OH NOES! Disconnection occurred.
@@ -60,10 +64,26 @@
 			//Log any messages sent from server
 			Server.bind('message', function( payload ) {
 			    //log(payload);
-			    msg = JSON.parse(payload);
+			    //msg = JSON.parse(payload);
+			    var temp = payload.split(":");
+			    var result = "";
+			    for (var i in temp)
+			    {
+			        result += temp[i];
+			        result += " ";
+			    }
+			    //log(result);
+			    if (temp[0] == "SCRCHN")
+			    {
+			        scoreArray[parseInt(temp[1])] = [temp[2], parseInt(temp[3])];
+			    }
+			    else
+			    {
+			        objArray[parseInt(temp[1])] = [parseFloat(temp[2]), parseFloat(temp[3]), parseFloat(temp[4]), parseFloat(temp[5])];
+			    }
 			    //log(msg.objects[0].x);
 			    //log("Score: " + msg.scores[0].score);
-			    redraw(msg);
+			    redraw(objArray, scoreArray);
 			    //Boundary = new component(msg.objects[0].width, msg.objects[0].height, "black", msg.objects[0].x, msg.objects[0].y);
 			    //Ball = new component(msg.objects[5].width, msg.objects[5].height, "red", msg.objects[5].x, msg.objects[5].y);
 			});
@@ -71,15 +91,24 @@
 			Server.connect();
         }
         
-        function redraw(msg){
+        function redraw(msg, score){
         	myGameArea.clear();
-        	for(var i = 0; i < msg.objects.length; ++i){
-        		//log(i);
-        		(new component(msg.objects[i].width, msg.objects[i].height, "black", msg.objects[i].x, msg.objects[i].y, "object")).update();
+        	for(var i in msg){
+        	    //log(i);
+        	    (new component(msg[i][2], msg[i][3], "black", msg[i][0], msg[i][1], "object")).update();
         	}
-        	var myScore = new component("30px", "Consolas", "black", 250, 40, "text");
-        	myScore.text="SCORE: " + msg.scores[0].score;
-        	myScore.update();
+        	var Score1 = new component("30px", "Consolas", "black", 650, 40, "text");
+        	Score1.text= score[0][0] + ": " + score[0][1];
+        	Score1.update();
+        	var Score2 = new component("30px", "Consolas", "black", 650, 70, "text");
+        	Score2.text= score[1][0] + ": " + score[1][1];
+        	Score2.update();
+        	var Score3 = new component("30px", "Consolas", "black", 650, 100, "text");
+        	Score3.text= score[2][0] + ": " + score[2][1];
+        	Score3.update();
+        	var Score4 = new component("30px", "Consolas", "black", 650, 130, "text");
+        	Score4.text= score[3][0] + ": " + score[3][1];
+        	Score4.update();
         }
 
         function disconnect()
@@ -109,7 +138,7 @@
         var myGameArea = {
             canvas: document.createElement("canvas"),
             start: function () {
-                this.canvas.width = 550;
+                this.canvas.width = 950;
                 this.canvas.height = 550;
                 this.context = this.canvas.getContext("2d");
                 document.body.insertBefore(this.canvas, document.body.childNodes[0]);
@@ -186,11 +215,11 @@
         function updateGameArea()
         {
            if (myGameArea.keys && myGameArea.keys[38]) {
-                this.send("{\"deltaY\":-10.0}");
+                this.send("MOVE-10.0");
                 //count--;
            }
            if (myGameArea.keys && myGameArea.keys[40]) {
-                this.send("{\"deltaY\":10.0}");
+                this.send("MOVE10.0");
                 //count++;
            }
            //var t = setTimeout(startTime, 200);
