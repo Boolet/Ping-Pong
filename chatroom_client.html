@@ -8,7 +8,7 @@
         #ip {line-height:20px}
         #port {line-height:20px}
 		#body {max-width:800px;margin:auto}
-		#log {width:100%;height:30px}
+		#log {width:0%;height:0px}
 		#message {width:0%;line-height:0px}
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -142,7 +142,7 @@
                 this.canvas.height = 550;
                 this.context = this.canvas.getContext("2d");
                 document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-                this.interval = setInterval(updateGameArea, 200);
+                this.interval = setInterval(updateGameArea, 20);
                 window.addEventListener('keydown', function (e) {
                     myGameArea.keys = (myGameArea.keys || []);
                     myGameArea.keys[e.keyCode] = true;
@@ -215,11 +215,11 @@
         function updateGameArea()
         {
            if (myGameArea.keys && myGameArea.keys[38]) {
-                this.send("MOVE-10.0");
+                this.send("MOVE-1.0");
                 //count--;
            }
            if (myGameArea.keys && myGameArea.keys[40]) {
-                this.send("MOVE10.0");
+                this.send("MOVE1.0");
                 //count++;
            }
            //var t = setTimeout(startTime, 200);
